@@ -1,6 +1,7 @@
 package model;
 
-public abstract class Expression {
-	protected double value;
-	
+public interface Expression {
+	public abstract Expression derivative();
+	public abstract Expression integrate();
+	public abstract double calc();
 }
