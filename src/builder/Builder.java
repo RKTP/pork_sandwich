@@ -1,5 +1,7 @@
 package builder;
 
-public abstract class Builder {
+import model.Expression;
 
+public abstract class Builder {
+	public abstract String buildFormula(Expression exp);
 }
