@@ -1,7 +1,11 @@
 package model;
 
-public class Block implements Expression {
+/*
+ * This may not be needed
+ */
 
+public class Block implements Expression {
+	Expression content;
 	@Override
 	public Expression derivative() {
 		return null;
