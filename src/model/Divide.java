@@ -4,6 +4,11 @@ import exception.ValueException;
 
 public class Divide implements Expression {
 	private Expression left, right;
+	
+	public Divide(Expression left, Expression right) {
+		this.left = left;
+		this.right = right;
+	}
 
 	@Override
 	public Expression derivative() {

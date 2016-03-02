@@ -1,9 +1,19 @@
 package model;
 
+import java.lang.Math;
+
 public class Exponential implements Expression {
+	private Expression variable;
+	private Expression base;
+	
+	public Exponential(Expression variable, Expression base) {
+		this.variable = variable;
+		this.base = base;
+	}
+	
 	@Override
 	public Expression derivative() {
-		return null;
+		return new Multiply(base, new Exponential(variable, new Subtract(base, new Value(1.0))));
 	}
 
 	@Override
@@ -12,8 +22,8 @@ public class Exponential implements Expression {
 	}
 
 	@Override
-	public double calc() {
-		return 0;
+	public double calc() throws Exception {
+		return Math.pow(this.variable.calc(), this.base.calc());
 	}
 
 }

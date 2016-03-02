@@ -1,10 +1,16 @@
 package model;
 
+import java.lang.Math;
+
 public class Cosine extends Trigonometric {
+	
+	public Cosine(Expression variable) {
+		this.variable = variable;
+	}
 
 	@Override
 	public Expression derivative() {
-		return null;
+		return new Multiply(new Value(-1.0), new Sine(this.variable));
 	}
 
 	@Override
@@ -13,8 +19,8 @@ public class Cosine extends Trigonometric {
 	}
 
 	@Override
-	public double calc() {
-		return 0;
+	public double calc() throws Exception {
+		return Math.cos(this.variable.calc());
 	}
 
 }

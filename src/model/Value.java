@@ -1,10 +1,15 @@
 package model;
 
 public class Value implements Expression {
-	protected double value;
+	private double value;
+	
+	public Value(double value) {
+		this.value = value;
+	}
+	
 	@Override
 	public Expression derivative() {
-		return null;
+		return new Value(0);
 	}
 
 	@Override
