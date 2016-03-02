@@ -11,12 +11,13 @@ public class Add implements Expression {
 	@Override
 	public Expression derivative() throws Exception {
 		Expression deriv = new Add(this.left.derivative(), this.right.derivative());
-		return null;
+		return deriv;
 	}
 
 	@Override
-	public Expression integrate() {
-		return null;
+	public Expression integrate() throws Exception {
+		Expression integration = new Add(this.left.integrate(), this.right.integrate());
+		return integration;
 	}
 
 	@Override
