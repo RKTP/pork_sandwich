@@ -11,4 +11,8 @@ public class Euler extends Value {
 		super(0);
 	}
 	
+	@Override
+	public String stringify() {
+		return "e";
+	}
 }

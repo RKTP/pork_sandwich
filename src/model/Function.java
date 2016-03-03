@@ -1,9 +1,9 @@
 package model;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Function {
-	private ArrayList<Value> varList;
+	private HashMap<Variable,String> varList;
 	private Expression formula;
 
 }

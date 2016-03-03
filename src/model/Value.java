@@ -8,18 +8,23 @@ public class Value extends Expression {
 	}
 	
 	@Override
-	public Expression derivative() {
+	public Expression derivative(Variable var) {
 		return new Value(0);
 	}
 
 	@Override
-	public Expression integrate() {
-		return null;
+	public Expression integrate(Variable var) {
+		return new Multiply(this, new Power(var, new Value(1.0)));
 	}
 
 	@Override
 	public double calc() {
 		return value;
+	}
+
+	@Override
+	public String stringify() {
+		return Double.toString(this.value);
 	}
 
 }

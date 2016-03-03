@@ -1,6 +1,6 @@
 package model;
 
 public interface Equation {
-	public abstract Expression derivative() throws Exception;
-	public abstract Expression integrate() throws Exception;
+	public abstract Expression derivative(Variable var) throws Exception;
+	public abstract Expression integrate(Variable var) throws Exception;
 }

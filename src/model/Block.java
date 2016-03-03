@@ -13,18 +13,23 @@ public class Block extends Expression {
 	}
 	
 	@Override
-	public Expression derivative() throws Exception {
-		return this.content.derivative();
+	public Expression derivative(Variable var) throws Exception {
+		return this.content.derivative(var);
 	}
 
 	@Override
-	public Expression integrate() throws Exception {
-		return this.content.integrate();
+	public Expression integrate(Variable var) throws Exception {
+		return this.content.integrate(var);
 	}
 
 	@Override
 	public double calc() throws Exception {
 		return this.content.calc();
+	}
+
+	@Override
+	public String stringify() {
+		return "("+this.content.stringify()+")";
 	}
 
 }

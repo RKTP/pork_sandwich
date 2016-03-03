@@ -11,4 +11,8 @@ public class Pi extends Value {
 		super(0);
 	}
 	
+	@Override
+	public String stringify() {
+		return "¥ð";
+	}
 }

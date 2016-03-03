@@ -9,12 +9,12 @@ public class Sine extends Trigonometric {
 	}
 	
 	@Override
-	public Expression derivative() {
+	public Expression derivative(Variable var) {
 		return new Cosine(this.variable);
 	}
 
 	@Override
-	public Expression integrate() {
+	public Expression integrate(Variable var) {
 		return null;
 	}
 
@@ -22,6 +22,11 @@ public class Sine extends Trigonometric {
 	public double calc() throws Exception {
 		Math.sin(this.variable.calc());
 		return 0;
+	}
+
+	@Override
+	public String stringify() {
+		return "sin(" + this.variable.stringify() + ")";
 	}
 
 }

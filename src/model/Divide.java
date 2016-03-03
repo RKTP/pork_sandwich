@@ -11,12 +11,15 @@ public class Divide extends Expression {
 	}
 
 	@Override
-	public Expression derivative() {
-		return null;
+	public Expression derivative(Variable var) throws Exception {
+		Expression dividee, divider;
+		dividee = new Add(new Multiply(left, right.derivative(var)), new Multiply(left.derivative(var), right));
+		divider = new Power(this.right, new Value(2.0));
+		return new Divide(dividee, divider);
 	}
 
 	@Override
-	public Expression integrate() {
+	public Expression integrate(Variable var) {
 		return null;
 	}
 
@@ -24,6 +27,11 @@ public class Divide extends Expression {
 	public double calc() throws Exception {
 		if (this.right.calc() == 0) throw new ValueException();
 		else return this.left.calc() / this.right.calc();
+	}
+
+	@Override
+	public String stringify() {
+		return this.left.stringify() + "/" + this.right.stringify();
 	}
 
 }
