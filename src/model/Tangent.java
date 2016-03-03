@@ -10,7 +10,7 @@ public class Tangent extends Trigonometric {
 	
 	@Override
 	public Expression derivative(Variable var) {
-		return new Exponential(new Secant(this.variable),new Value(2.0));
+		return new Power(new Secant(this.variable),new Value(2.0));
 	}
 
 	@Override

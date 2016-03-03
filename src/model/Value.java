@@ -19,7 +19,7 @@ public class Value extends Expression {
 
 	@Override
 	public double calc() {
-		return value;
+		return this.value;
 	}
 
 	@Override
