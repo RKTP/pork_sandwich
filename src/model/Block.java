@@ -1,24 +1,30 @@
 package model;
 
 /*
- * This may not be needed
+ * Only exists for Building formula in String / LaTeX
+ * If any other solution comes out, this will be removed immediately.
  */
 
-public class Block implements Expression {
+public class Block extends Expression {
 	Expression content;
+	
+	public Block(Expression content) {
+		this.content = content;
+	}
+	
 	@Override
-	public Expression derivative() {
-		return null;
+	public Expression derivative() throws Exception {
+		return this.content.derivative();
 	}
 
 	@Override
-	public Expression integrate() {
-		return null;
+	public Expression integrate() throws Exception {
+		return this.content.integrate();
 	}
 
 	@Override
-	public double calc() {
-		return 0;
+	public double calc() throws Exception {
+		return this.content.calc();
 	}
 
 }

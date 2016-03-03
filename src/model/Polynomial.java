@@ -1,6 +1,6 @@
 package model;
 
-public class Polynomial implements Expression {
+public class Polynomial extends Expression {
 	Expression variable;
 	Expression power;
 	

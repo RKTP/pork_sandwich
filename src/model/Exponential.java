@@ -2,7 +2,7 @@ package model;
 
 import java.lang.Math;
 
-public class Exponential implements Expression {
+public class Exponential extends Expression {
 	private Expression variable;
 	private Expression base;
 	

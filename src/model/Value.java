@@ -1,6 +1,6 @@
 package model;
 
-public class Value implements Expression {
+public class Value extends Expression {
 	private double value;
 	
 	public Value(double value) {

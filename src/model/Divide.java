@@ -2,7 +2,7 @@ package model;
 
 import exception.ValueException;
 
-public class Divide implements Expression {
+public class Divide extends Expression {
 	private Expression left, right;
 	
 	public Divide(Expression left, Expression right) {

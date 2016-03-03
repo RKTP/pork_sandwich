@@ -1,6 +1,6 @@
 package model;
 
-public class Add implements Expression {
+public class Add extends Expression {
 	private Expression left, right;
 	
 	public Add(Expression left, Expression right) {

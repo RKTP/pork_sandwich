@@ -2,7 +2,7 @@ package model;
 
 import java.lang.Math;
 
-public class Logarithm implements Expression {
+public class Logarithm extends Expression {
 	Expression param;
 	Expression base;
 	

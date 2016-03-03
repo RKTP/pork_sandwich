@@ -1,6 +1,6 @@
 package model;
 
-public class Multiply implements Expression {
+public class Multiply extends Expression {
 	private Expression left, right;
 
 	public Multiply(Expression left, Expression right) {

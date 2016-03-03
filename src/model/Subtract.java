@@ -1,6 +1,6 @@
 package model;
 
-public class Subtract implements Expression {
+public class Subtract extends Expression {
 	private Expression left, right;
 	
 	public Subtract(Expression left, Expression right) {

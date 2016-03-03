@@ -3,7 +3,7 @@
 
 package model;
 
-public class Composition implements Expression {
+public class Composition extends Expression {
 	Expression outer, inner;
 	
 	public Composition(Expression outer, Expression inner) {
