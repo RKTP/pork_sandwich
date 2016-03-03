@@ -3,18 +3,18 @@ package model;
 import java.lang.Math;
 
 public class Exponential extends Expression {
-	private Expression variable;
 	private Expression base;
+	private Expression variable;
 	
-	public Exponential(Expression variable, Expression base) {
-		this.variable = variable;
+	public Exponential(Expression base, Expression variable) {
 		this.base = base;
+		this.variable = variable;
 		
 	}
 	
 	@Override
 	public Expression derivative(Variable var) {
-		return new Multiply(base, new Exponential(variable, new Subtract(base, new Value(1.0))));
+		return new Multiply(new Exponential(this.base, this.variable), new Logarithm(this.base, new Euler()));
 	}
 
 	@Override
@@ -24,7 +24,7 @@ public class Exponential extends Expression {
 
 	@Override
 	public double calc() throws Exception {
-		return Math.pow(this.variable.calc(), this.base.calc());
+		return Math.pow(this.base.calc(), this.variable.calc());
 	}
 
 	@Override

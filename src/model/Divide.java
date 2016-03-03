@@ -13,7 +13,7 @@ public class Divide extends Expression {
 	@Override
 	public Expression derivative(Variable var) throws Exception {
 		Expression dividee, divider;
-		dividee = new Add(new Multiply(left, right.derivative(var)), new Multiply(left.derivative(var), right));
+		dividee = new Subtract(new Multiply(left.derivative(var), right), new Multiply(left, right.derivative(var)));
 		divider = new Power(this.right, new Value(2.0));
 		return new Divide(dividee, divider);
 	}

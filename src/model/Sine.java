@@ -20,8 +20,7 @@ public class Sine extends Trigonometric {
 
 	@Override
 	public double calc() throws Exception {
-		Math.sin(this.variable.calc());
-		return 0;
+		return Math.sin(this.variable.calc());
 	}
 
 	@Override

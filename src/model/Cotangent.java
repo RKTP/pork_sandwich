@@ -8,7 +8,7 @@ public class Cotangent extends Trigonometric {
 
 	@Override
 	public Expression derivative(Variable var) {
-		return new Multiply(new Value(-1.0), new Exponential(new Cosecant(this.variable), new Value(2.0)));
+		return new Multiply(new Value(-1.0), new Power(new Cosecant(this.variable), new Value(2.0)));
 	}
 
 	@Override

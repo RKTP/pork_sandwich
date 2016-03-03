@@ -1,9 +1,16 @@
 package model;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 
 public class Function {
-	private HashMap<Variable,String> varList;
+	private ArrayList<Variable> varList;
 	private Expression formula;
 
+	/*
+	 * mock constructor
+	 */
+	public Function(ArrayList<Variable> varList, Expression formula) {
+		this.varList = varList;
+		this.formula = formula;
+	}
 }

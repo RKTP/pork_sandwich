@@ -12,6 +12,11 @@ public class Pi extends Value {
 	}
 	
 	@Override
+	public double calc() {
+		return this.value;
+	}
+	
+	@Override
 	public String stringify() {
 		return "¥ð";
 	}

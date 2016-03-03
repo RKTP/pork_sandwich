@@ -3,18 +3,18 @@ package model;
 import java.lang.Math;
 
 public class Logarithm extends Expression {
-	Expression param;
 	Expression base;
+	Expression param;
 	
-	public Logarithm(Expression param, Expression base) {
-		this.param = param;
+	public Logarithm(Expression base, Expression param) {
 		this.base = base;
+		this.param = param;
 		
 	}
 
 	@Override
 	public Expression derivative(Variable var) {
-		Expression divider = new Multiply(this.param, new Logarithm(this.base, new Euler()));
+		Expression divider = new Multiply(this.param, new Logarithm(new Euler(), this.base));
 		return new Divide(new Value(1.0), divider);
 	}
 
