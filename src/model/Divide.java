@@ -27,9 +27,11 @@ public class Divide extends Expression {
 	@Override
 	public Expression derivative(Variable var) throws Exception {
 		Expression dividee, divider;
+		
 		ArrayList<Expression> exp = new ArrayList<Expression>();
 		exp.add(new Multiply(left.derivative(var), right));
 		exp.add(new Multiply(left, right.derivative(var),-1.0));
+		
 		dividee = new Add(exp);
 		divider = new Power(this.right, new Constant(2.0));
 		return new Divide(dividee, divider, this.coefficient);
