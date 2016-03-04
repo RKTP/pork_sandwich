@@ -3,10 +3,10 @@ package model;
 import java.lang.Math;
 
 public class Power extends Expression {
-	Calculatable variable;
+	Term variable;
 	Expression power;
 	
-	public Power(Calculatable variable, Expression power) {
+	public Power(Term variable, Expression power) {
 		this.variable = variable;
 		this.power = power;
 		

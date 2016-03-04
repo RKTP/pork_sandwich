@@ -1,6 +1,6 @@
 package model;
 
-public class Variable implements Calculatable {
+public class Variable implements Term {
 	private double value;
 	private String term;
 	
