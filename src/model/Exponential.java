@@ -9,12 +9,18 @@ public class Exponential extends Expression {
 	public Exponential(Expression base, Expression variable) {
 		this.base = base;
 		this.variable = variable;
+		
+		this.varList.addAll(this.base.getUsingVariables());
+		this.varList.addAll(this.variable.getUsingVariables());
 	}
 	
 	public Exponential(Expression base, Expression variable, double co) {
 		this.base = base;
 		this.variable = variable;
 		this.coefficient = co;
+		
+		this.varList.addAll(this.base.getUsingVariables());
+		this.varList.addAll(this.variable.getUsingVariables());
 	}
 	
 	@Override

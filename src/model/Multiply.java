@@ -8,12 +8,18 @@ public class Multiply extends Expression {
 	public Multiply(Expression left, Expression right) {
 		this.left = left;
 		this.right = right;	
+		
+		this.varList.addAll(this.left.getUsingVariables());
+		this.varList.addAll(this.right.getUsingVariables());
 	}
 	
 	public Multiply(Expression left, Expression right, double co) {
 		this.left = left;
 		this.right = right;
 		this.coefficient = co;
+		
+		this.varList.addAll(this.left.getUsingVariables());
+		this.varList.addAll(this.right.getUsingVariables());
 	}
 
 

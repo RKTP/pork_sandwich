@@ -9,7 +9,7 @@ public class Add extends Expression {
 		this.exp = exp;
 		
 		for(Expression e : exp) {
-			this.varList.addAll(e.varList);
+			this.varList.addAll(e.getUsingVariables());
 		}
 	}
 	
@@ -18,7 +18,7 @@ public class Add extends Expression {
 		this.exp = exp;
 		
 		for(Expression e : exp) {
-			this.varList.addAll(e.varList);
+			this.varList.addAll(e.getUsingVariables());
 		}
 	}
 

@@ -12,20 +12,32 @@ public class Power extends Expression {
 	public Power(Term variable, Expression power) {
 		this.variable = variable;
 		this.power = power;
+		
 		if(variable instanceof Variable) this.varList.add((Variable)variable);
-		else if(variable instanceof Expression) this.varList.addAll(((Expression)variable).usingVariables());
-		else
+		else if(variable instanceof Expression) this.varList.addAll(((Expression)variable).getUsingVariables());
+		else {
 			try {
 				throw new NotImplementedException();
 			} catch (NotImplementedException e) {
 				e.printStackTrace();
 			}
+		}
 	}
 	
 	public Power(Term variable, Expression power, double co) {
 		this.variable = variable;
 		this.power = power;
 		this.coefficient = co;
+		
+		if(variable instanceof Variable) this.varList.add((Variable)variable);
+		else if(variable instanceof Expression) this.varList.addAll(((Expression)variable).getUsingVariables());
+		else {
+			try {
+				throw new NotImplementedException();
+			} catch (NotImplementedException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	@Override

@@ -6,11 +6,15 @@ public class Cosine extends Trigonometric {
 	
 	public Cosine(Expression variable) {
 		this.variable = variable;
+		
+		this.varList.addAll(this.variable.getUsingVariables());
 	}
 	
 	public Cosine(Expression variable, double co) {
 		this.variable = variable;
 		this.coefficient = co;
+	
+		this.varList.addAll(this.variable.getUsingVariables());
 	}
 
 	@Override

@@ -15,7 +15,7 @@ public abstract class Expression implements Term {
 		varList = new HashSet<Variable>();
 	}
 	
-	public Set<Variable> usingVariables() {
+	public Set<Variable> getUsingVariables() {
 		return this.varList;
 	}
 	

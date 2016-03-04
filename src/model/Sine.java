@@ -6,11 +6,15 @@ public class Sine extends Trigonometric {
 	
 	public Sine(Expression variable) {
 		this.variable = variable;
+		
+		this.varList.addAll(this.variable.getUsingVariables());
 	}
 	
 	public Sine(Expression variable, double co) {
 		this.variable = variable;
 		this.coefficient = co;
+		
+		this.varList.addAll(this.variable.getUsingVariables());
 	}
 
 	@Override

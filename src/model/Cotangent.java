@@ -4,11 +4,15 @@ public class Cotangent extends Trigonometric {
 	
 	public Cotangent(Expression variable) {
 		this.variable = variable;
+		
+		this.varList.addAll(this.variable.getUsingVariables());
 	}
 	
 	public Cotangent(Expression variable, double co) {
 		this.variable = variable;
 		this.coefficient = co;
+		
+		this.varList.addAll(this.variable.getUsingVariables());
 	}
 
 	@Override

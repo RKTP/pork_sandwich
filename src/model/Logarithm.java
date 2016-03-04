@@ -8,13 +8,19 @@ public class Logarithm extends Expression {
 	
 	public Logarithm(Expression base, Expression param) {
 		this.base = base;
-		this.param = param;	
+		this.param = param;
+		
+		this.varList.addAll(this.base.getUsingVariables());
+		this.varList.addAll(this.param.getUsingVariables());
 	}
 	
 	public Logarithm(Expression base, Expression param, double co) {
 		this.base = base;
 		this.param = param;
 		this.coefficient = co;
+	
+		this.varList.addAll(this.base.getUsingVariables());
+		this.varList.addAll(this.param.getUsingVariables());
 	}
 
 	@Override

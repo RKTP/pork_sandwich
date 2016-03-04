@@ -4,11 +4,15 @@ public class Secant extends Trigonometric {
 	
 	public Secant(Expression variable) {
 		this.variable = variable;
+		
+		this.varList.addAll(this.variable.getUsingVariables());
 	}
 	
 	public Secant(Expression variable, double co) {
 		this.variable = variable;
 		this.coefficient = co;
+		
+		this.varList.addAll(this.variable.getUsingVariables());
 	}
 	
 	@Override

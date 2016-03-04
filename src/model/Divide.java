@@ -10,12 +10,18 @@ public class Divide extends Expression {
 	public Divide(Expression left, Expression right) {
 		this.left = left;
 		this.right = right;
+		
+		this.varList.addAll(this.left.getUsingVariables());
+		this.varList.addAll(this.right.getUsingVariables());
 	}
 	
 	public Divide(Expression left, Expression right, double co) {
 		this.left = left;
 		this.right = right;
 		this.coefficient = co;
+		
+		this.varList.addAll(this.left.getUsingVariables());
+		this.varList.addAll(this.right.getUsingVariables());
 	}
 
 	@Override

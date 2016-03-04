@@ -6,11 +6,15 @@ public class Tangent extends Trigonometric {
 	
 	public Tangent(Expression variable) {
 		this.variable = variable;
+		
+		this.varList.addAll(this.variable.getUsingVariables());
 	}
 	
 	public Tangent(Expression variable, double co) {
 		this.variable = variable;
 		this.coefficient = co;
+		
+		this.varList.addAll(this.variable.getUsingVariables());
 	}
 	
 	@Override
