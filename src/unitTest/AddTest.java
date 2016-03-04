@@ -2,6 +2,8 @@ package unitTest;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,7 +15,11 @@ public class AddTest {
 	@Before
 	public void setUp() throws Exception {
 		Variable variable = new Variable("x", 5.0);
-		add = new Add(new Power(variable, new Value(1.0)), new Value(1.5));
+		ArrayList<Expression> exp = new ArrayList<Expression>();
+		exp.add(new Power(variable, new Constant(1.0)));
+		exp.add(new Constant(1.5));
+		
+		add = new Add(exp);
 	}
 
 	@Test
