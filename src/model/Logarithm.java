@@ -8,14 +8,19 @@ public class Logarithm extends Expression {
 	
 	public Logarithm(Expression base, Expression param) {
 		this.base = base;
+		this.param = param;	
+	}
+	
+	public Logarithm(Expression base, Expression param, double co) {
+		this.base = base;
 		this.param = param;
-		
+		this.coefficient = co;
 	}
 
 	@Override
 	public Expression derivative(Variable var) {
 		Expression divider = new Multiply(this.param, new Logarithm(new Euler(), this.base));
-		return new Divide(new Value(1.0), divider);
+		return new Divide(new Constant(1.0), divider, this.coefficient);
 	}
 
 	@Override
@@ -25,7 +30,7 @@ public class Logarithm extends Expression {
 
 	@Override
 	public double calc() throws Exception {
-		return Math.log(this.param.calc()) / Math.log(this.base.calc());
+		return Math.log(this.param.calc()) / Math.log(this.base.calc()) * this.coefficient;
 	}
 
 	@Override

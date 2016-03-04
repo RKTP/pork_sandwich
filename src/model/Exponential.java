@@ -9,12 +9,17 @@ public class Exponential extends Expression {
 	public Exponential(Expression base, Expression variable) {
 		this.base = base;
 		this.variable = variable;
-		
+	}
+	
+	public Exponential(Expression base, Expression variable, double co) {
+		this.base = base;
+		this.variable = variable;
+		this.coefficient = co;
 	}
 	
 	@Override
 	public Expression derivative(Variable var) {
-		return new Multiply(new Exponential(this.base, this.variable), new Logarithm(this.base, new Euler()));
+		return new Multiply(new Exponential(this.base, this.variable), new Logarithm(this.base, new Euler()), this.coefficient);
 	}
 
 	@Override
@@ -24,7 +29,7 @@ public class Exponential extends Expression {
 
 	@Override
 	public double calc() throws Exception {
-		return Math.pow(this.base.calc(), this.variable.calc());
+		return Math.pow(this.base.calc(), this.variable.calc()) * this.coefficient;
 	}
 
 	@Override

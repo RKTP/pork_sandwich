@@ -5,10 +5,15 @@ public class Cotangent extends Trigonometric {
 	public Cotangent(Expression variable) {
 		this.variable = variable;
 	}
+	
+	public Cotangent(Expression variable, double co) {
+		this.variable = variable;
+		this.coefficient = co;
+	}
 
 	@Override
 	public Expression derivative(Variable var) {
-		return new Multiply(new Value(-1.0), new Power(new Cosecant(this.variable), new Value(2.0)));
+		return new Power(new Cosecant(this.variable), new Constant(2.0),this.coefficient*-1.0);
 	}
 
 	@Override
@@ -18,7 +23,7 @@ public class Cotangent extends Trigonometric {
 
 	@Override
 	public double calc() throws Exception {
-		return new Divide(new Value(1.0), new Tangent(this.variable)).calc();
+		return new Divide(new Constant(1.0), new Tangent(this.variable)).calc() * this.coefficient;
 	}
 
 	@Override

@@ -8,9 +8,14 @@ public class Tangent extends Trigonometric {
 		this.variable = variable;
 	}
 	
+	public Tangent(Expression variable, double co) {
+		this.variable = variable;
+		this.coefficient = co;
+	}
+	
 	@Override
 	public Expression derivative(Variable var) {
-		return new Power(new Secant(this.variable),new Value(2.0));
+		return new Power(new Secant(this.variable),new Constant(2.0), this.coefficient);
 	}
 
 	@Override
@@ -20,7 +25,7 @@ public class Tangent extends Trigonometric {
 
 	@Override
 	public double calc() throws Exception {
-		return Math.tan(this.variable.calc());
+		return Math.tan(this.variable.calc()) * this.coefficient;
 	}
 
 	@Override

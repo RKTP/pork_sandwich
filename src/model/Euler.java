@@ -1,6 +1,6 @@
 package model;
 
-public class Euler extends Value {
+public class Euler extends Constant {
 	private final double value = 2.71828182845904523536;
 	
 	public Euler() {

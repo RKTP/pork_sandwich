@@ -1,6 +1,9 @@
 package model;
 
 import java.lang.Math;
+import java.util.ArrayList;
+
+import exception.NotImplementedException;
 
 public class Power extends Expression {
 	Term variable;
@@ -9,13 +12,30 @@ public class Power extends Expression {
 	public Power(Term variable, Expression power) {
 		this.variable = variable;
 		this.power = power;
-		
+		if(variable instanceof Variable) this.varList.add((Variable)variable);
+		else if(variable instanceof Expression) this.varList.addAll(((Expression)variable).usingVariables());
+		else
+			try {
+				throw new NotImplementedException();
+			} catch (NotImplementedException e) {
+				e.printStackTrace();
+			}
+	}
+	
+	public Power(Term variable, Expression power, double co) {
+		this.variable = variable;
+		this.power = power;
+		this.coefficient = co;
 	}
 	
 	@Override
 	public Expression derivative(Variable var) {
 		if(!(this.variable instanceof Expression)) {
-			return new Multiply(this.power, new Power(this.variable, new Subtract(this.power, new Value(1.0))));
+			ArrayList<Expression> exp = new ArrayList<Expression>();
+			exp.add(this.power);
+			exp.add(new Constant(-1.0));
+			
+			return new Multiply(this.power, new Power(this.variable, new Add(exp)), this.coefficient);
 		} else {
 			return null;//function derivative
 		}
@@ -24,7 +44,11 @@ public class Power extends Expression {
 	@Override
 	public Expression integrate(Variable var) {
 		if(!(this.variable instanceof Expression)) {
-			return new Divide(new Power(this.variable, new Add(this.power, new Value(1.0))), new Add(this.power, new Value(1.0)));
+			ArrayList<Expression> exp = new ArrayList<Expression>();
+			exp.add(this.power);
+			exp.add(new Constant(1.0));
+			
+			return new Divide(new Power(this.variable, new Add(exp)), new Add(exp), this.coefficient);
 		} else {
 			return null;//function integration
 		}
@@ -32,7 +56,7 @@ public class Power extends Expression {
 
 	@Override
 	public double calc() throws Exception {
-		return Math.pow(this.variable.calc(), this.power.calc());
+		return Math.pow(this.variable.calc(), this.power.calc()) * this.coefficient;
 	}
 
 	@Override

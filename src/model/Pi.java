@@ -1,6 +1,6 @@
 package model;
 
-public class Pi extends Value {
+public class Pi extends Constant {
 	private final double value = 3.14159265358979323846;
 	
 	public Pi() {

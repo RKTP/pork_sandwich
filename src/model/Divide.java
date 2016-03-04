@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 import exception.ValueException;
 
 public class Divide extends Expression {
@@ -9,13 +11,22 @@ public class Divide extends Expression {
 		this.left = left;
 		this.right = right;
 	}
+	
+	public Divide(Expression left, Expression right, double co) {
+		this.left = left;
+		this.right = right;
+		this.coefficient = co;
+	}
 
 	@Override
 	public Expression derivative(Variable var) throws Exception {
 		Expression dividee, divider;
-		dividee = new Subtract(new Multiply(left.derivative(var), right), new Multiply(left, right.derivative(var)));
-		divider = new Power(this.right, new Value(2.0));
-		return new Divide(dividee, divider);
+		ArrayList<Expression> exp = new ArrayList<Expression>();
+		exp.add(new Multiply(left.derivative(var), right));
+		exp.add(new Multiply(left, right.derivative(var),-1.0));
+		dividee = new Add(exp);
+		divider = new Power(this.right, new Constant(2.0));
+		return new Divide(dividee, divider, this.coefficient);
 	}
 
 	@Override
@@ -26,7 +37,7 @@ public class Divide extends Expression {
 	@Override
 	public double calc() throws Exception {
 		if (this.right.calc() == 0) throw new ValueException();
-		else return this.left.calc() / this.right.calc();
+		else return this.left.calc() / this.right.calc() * this.coefficient;
 	}
 
 	@Override

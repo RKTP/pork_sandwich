@@ -7,10 +7,15 @@ public class Cosine extends Trigonometric {
 	public Cosine(Expression variable) {
 		this.variable = variable;
 	}
+	
+	public Cosine(Expression variable, double co) {
+		this.variable = variable;
+		this.coefficient = co;
+	}
 
 	@Override
 	public Expression derivative(Variable var) {
-		return new Multiply(new Value(-1.0), new Sine(this.variable));
+		return new Sine(this.variable,-1.0*this.coefficient);
 	}
 
 	@Override
@@ -20,7 +25,7 @@ public class Cosine extends Trigonometric {
 
 	@Override
 	public double calc() throws Exception {
-		return Math.cos(this.variable.calc());
+		return Math.cos(this.variable.calc()) * this.coefficient;
 	}
 
 	@Override

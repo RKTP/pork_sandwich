@@ -1,20 +1,20 @@
 package model;
 
-public class Value extends Expression {
+public class Constant extends Expression {
 	private double value;
 	
-	public Value(double value) {
+	public Constant(double value) {
 		this.value = value;
 	}
 	
 	@Override
 	public Expression derivative(Variable var) {
-		return new Value(0);
+		return new Constant(0);
 	}
 
 	@Override
 	public Expression integrate(Variable var) {
-		return new Multiply(this, new Power(var, new Value(1.0)));
+		return new Multiply(this, new Power(var, new Constant(1.0)));
 	}
 
 	@Override
