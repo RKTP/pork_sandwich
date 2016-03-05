@@ -24,7 +24,7 @@ public class CosecantTest {
 	
 	@Test
 	public void testderiv() throws Exception {
-		assertEquals(csc.derivative(null).calc()/2, -6.308644059797900080, 0.0000001);
+		assertEquals(csc.derivative(x).calc()/2, -6.308644059797900080, 0.0000001);
 	}
 
 }

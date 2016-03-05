@@ -11,10 +11,11 @@ import model.*;
 
 public class AddTest {
 	Expression add;
+	Variable variable;
 	
 	@Before
 	public void setUp() throws Exception {
-		Variable variable = new Variable("x", 5.0);
+		variable = new Variable("x", 5.0);
 		ArrayList<Expression> exp = new ArrayList<Expression>();
 		exp.add(new Power(variable, new Constant(1.0)));
 		exp.add(new Constant(1.5));
@@ -29,7 +30,7 @@ public class AddTest {
 	
 	@Test
 	public void testderiv() throws Exception {
-		assertEquals(add.derivative(null).calc(), 1.0, 0.0000001);
+		assertEquals(add.derivative(variable).calc(), 1.0, 0.0000001);
 	}
 
 }

@@ -25,7 +25,7 @@ public class TangentTest {
 	
 	@Test
 	public void testderiv() throws Exception {
-		assertEquals(tan.derivative(null).calc()/9, 2.0, 0.0000001);
+		assertEquals(tan.derivative(x).calc()/9, 2.0, 0.0000001);
 	}
 
 }

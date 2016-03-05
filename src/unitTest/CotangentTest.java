@@ -24,7 +24,7 @@ public class CotangentTest {
 	
 	@Test
 	public void testderiv() throws Exception {
-		assertEquals(cot.derivative(null).calc()/3, -6.8284271247461900976, 0.0000001);
+		assertEquals(cot.derivative(x).calc()/3, -6.8284271247461900976, 0.0000001);
 	}
 
 }

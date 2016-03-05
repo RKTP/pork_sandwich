@@ -24,7 +24,7 @@ public class LogarithmTest {
 	
 	@Test
 	public void testderiv() throws Exception {
-		assertEquals(log.derivative(null).calc()/1.2, 0.0517779112133009, 0.0000001);
+		assertEquals(log.derivative(x).calc()/1.2, 0.0517779112133009, 0.0000001);
 	}
 
 }

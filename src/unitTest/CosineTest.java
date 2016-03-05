@@ -24,7 +24,7 @@ public class CosineTest {
 	
 	@Test
 	public void testderiv() throws Exception {
-		assertEquals(cos.derivative(null).calc()/2 , -0.7071067811865475, 0.0000001);
+		assertEquals(cos.derivative(x).calc()/2 , -0.7071067811865475, 0.0000001);
 	}
 
 }

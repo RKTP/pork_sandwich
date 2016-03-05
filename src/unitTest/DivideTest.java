@@ -36,7 +36,7 @@ public class DivideTest {
 	
 	@Test
 	public void testderiv() throws Exception {
-		assertEquals(div.derivative(null).calc(), -1.0, 0.0000001);
+		assertEquals(div.derivative(x).calc(), -1.0, 0.0000001);
 	}
 
 }

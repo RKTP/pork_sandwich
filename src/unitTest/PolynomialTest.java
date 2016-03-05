@@ -15,7 +15,7 @@ public class PolynomialTest {
 
 	@Before
 	public void setUp() throws Exception {
-		Variable x = new Variable("x",-2);
+		x = new Variable("x",-2);
 		ArrayList<Expression> exp = new ArrayList<Expression>();
 		exp.add(new Power(x, new Constant(7.0),2.0));
 		exp.add(new Power(x, new Constant(4.0),-5.0));
@@ -34,6 +34,6 @@ public class PolynomialTest {
 	
 	@Test
 	public void testderiv() throws Exception {
-		assertEquals(term.derivative(null).calc(), 1043, 0.0000001);
+		assertEquals(term.derivative(x).calc(), 1043.0, 0.0000001);
 	}
 }

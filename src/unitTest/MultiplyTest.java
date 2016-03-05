@@ -35,7 +35,7 @@ public class MultiplyTest {
 	
 	@Test
 	public void testderiv() throws Exception {
-		assertEquals(mul.derivative(null).calc(), -19.0, 0.0000001);
+		assertEquals(mul.derivative(x).calc(), -19.0, 0.0000001);
 	}
 
 }

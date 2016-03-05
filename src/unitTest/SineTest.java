@@ -24,7 +24,7 @@ public class SineTest {
 	
 	@Test
 	public void testderiv() throws Exception {
-		assertEquals(sin.derivative(null).calc()/0.002, 0.707106781186547524, 0.0000001);
+		assertEquals(sin.derivative(x).calc()/0.002, 0.707106781186547524, 0.0000001);
 	}
 
 }

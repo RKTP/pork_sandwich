@@ -24,7 +24,7 @@ public class SecantTest {
 	
 	@Test
 	public void testderiv() throws Exception {
-		assertEquals(sec.derivative(null).calc()/-2.7, 1.414213562373095048, 0.0000001);
+		assertEquals(sec.derivative(x).calc()/-2.7, 1.414213562373095048, 0.0000001);
 	}
 
 }
