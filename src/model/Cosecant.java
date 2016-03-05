@@ -16,8 +16,12 @@ public class Cosecant extends Trigonometric {
 	}
 	
 	@Override
-	public Expression derivative(Variable var) {
-		return new Multiply(new Cosecant(this.variable), new Cotangent(this.variable),this.coefficient*-1.0);
+	public Expression derivative(Variable var) throws Exception {
+		if(!this.varList.contains(var)) {
+			return new Constant(0.0);
+		}
+
+		return new Multiply(new  Multiply(new Cosecant(this.variable), new Cotangent(this.variable),this.coefficient*-1.0), this.variable.derivative(var));
 	}
 
 	@Override

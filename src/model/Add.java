@@ -24,6 +24,10 @@ public class Add extends Expression {
 
 	@Override
 	public Expression derivative(Variable var) throws Exception {
+		if(!this.varList.contains(var)) {
+			return new Constant(0.0);
+		}
+
 		ArrayList<Expression> dexp = new ArrayList<Expression>();
 		
 		for(Expression e : this.exp) {

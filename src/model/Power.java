@@ -41,15 +41,19 @@ public class Power extends Expression {
 	}
 	
 	@Override
-	public Expression derivative(Variable var) {
+	public Expression derivative(Variable var) throws Exception {
+		if(!this.varList.contains(var)) {
+			return new Constant(0.0);
+		}
+
+		ArrayList<Expression> exp = new ArrayList<Expression>();
+		exp.add(this.power);
+		exp.add(new Constant(-1.0));
+
 		if(!(this.variable instanceof Expression)) {
-			ArrayList<Expression> exp = new ArrayList<Expression>();
-			exp.add(this.power);
-			exp.add(new Constant(-1.0));
-			
 			return new Multiply(this.power, new Power(this.variable, new Add(exp)), this.coefficient);
 		} else {
-			return null;//function derivative
+			return new Multiply(new Multiply(this.power, new Power(this.variable, new Add(exp)), this.coefficient), ((Expression) this.variable).derivative(var));
 		}
 	}
 

@@ -24,8 +24,12 @@ public class Exponential extends Expression {
 	}
 	
 	@Override
-	public Expression derivative(Variable var) {
-		return new Multiply(new Exponential(this.base, this.variable), new Logarithm(this.base, new Euler()), this.coefficient);
+	public Expression derivative(Variable var) throws Exception {
+		if(!this.varList.contains(var)) {
+			return new Constant(0.0);
+		}
+
+		return new Multiply(new Multiply(new Exponential(this.base, this.variable), new Logarithm(this.base, new Euler()), this.coefficient), this.variable.derivative(var));
 	}
 
 	@Override

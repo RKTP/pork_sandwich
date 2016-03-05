@@ -18,8 +18,12 @@ public class Cosine extends Trigonometric {
 	}
 
 	@Override
-	public Expression derivative(Variable var) {
-		return new Sine(this.variable,-1.0*this.coefficient);
+	public Expression derivative(Variable var) throws Exception {
+		if(!this.varList.contains(var)) {
+			return new Constant(0.0);
+		}
+
+		return new Multiply(new Sine(this.variable,-1.0*this.coefficient), this.variable.derivative(var) );
 	}
 
 	@Override

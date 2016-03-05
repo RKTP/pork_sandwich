@@ -24,9 +24,13 @@ public class Logarithm extends Expression {
 	}
 
 	@Override
-	public Expression derivative(Variable var) {
+	public Expression derivative(Variable var) throws Exception {
+		if(!this.varList.contains(var)) {
+			return new Constant(0.0);
+		}
+
 		Expression divider = new Multiply(this.param, new Logarithm(new Euler(), this.base));
-		return new Divide(new Constant(1.0), divider, this.coefficient);
+		return new Multiply(new Divide(new Constant(1.0), divider, this.coefficient), this.param.derivative(var));
 	}
 
 	@Override

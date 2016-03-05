@@ -16,8 +16,12 @@ public class Secant extends Trigonometric {
 	}
 	
 	@Override
-	public Expression derivative(Variable var) {
-		return new Multiply(new Secant(variable), new Tangent(variable), this.coefficient);
+	public Expression derivative(Variable var) throws Exception {
+		if(!this.varList.contains(var)) {
+			return new Constant(0.0);
+		}
+
+		return new Multiply(new Multiply(new Secant(variable), new Tangent(variable), this.coefficient), this.variable.derivative(var));
 	}
 
 	@Override

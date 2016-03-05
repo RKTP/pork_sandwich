@@ -25,6 +25,10 @@ public class Multiply extends Expression {
 
 	@Override
 	public Expression derivative(Variable var) throws Exception {
+		if(!this.varList.contains(var)) {
+			return new Constant(0.0);
+		}
+
 		Expression left = new Multiply(this.left.derivative(var), this.right);
 		Expression right = new Multiply(this.left, this.right.derivative(var));
 		
