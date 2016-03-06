@@ -8,9 +8,10 @@ public class Function {
 	private Map<Character, Variable> varMap;
 	private Expression formula;
 
-	public Function(Set<Variable> varList, Expression formula) throws Exception {
+	public Function(Expression formula) throws Exception {
 		this.formula = formula;
 		this.varMap = new HashMap<>();
+		Set<Variable> varList = formula.getUsingVariables();
 		Iterator<Variable> it = varList.iterator();
 
 		for(;it.hasNext();) {
@@ -23,26 +24,28 @@ public class Function {
 		}
 	}
 
-	public void setVariableValue(char key, double value) {
-		Variable var = this.varMap.get(key);
+	public void setVariableValue(char varName, double value) {
+		Variable var = this.varMap.get(varName);
 		var.setValue(value);
 	}
 
-	public ArrayList<Expression> getDerivative() throws Exception {
+	public ArrayList<Function> getDerivative() throws Exception {
 		Set<Character> keySet = this.varMap.keySet();
 		Iterator<Character> it = keySet.iterator();
-		ArrayList<Expression> derivativeList = new ArrayList<>();
+		ArrayList<Function> derivativeList = new ArrayList<>();
 
 		for(;it.hasNext();) {
 			Character key = it.next();
-			derivativeList.add(this.formula.derivative(this.varMap.get(key)));
+			Function dFunction = new Function(this.formula.derivative(this.varMap.get(key)));
+			derivativeList.add(dFunction);
 		}
 
 		return derivativeList;
 	}
 
-	public Expression getDerivative(Variable var) throws Exception {
-		return this.formula.derivative(var);
+	public Function getDerivative(char varName) throws Exception {
+		Function dFunction = new Function(this.formula.derivative(this.varMap.get(varName)));
+		return dFunction;
 	}
 
 	public double calc() throws Exception {
