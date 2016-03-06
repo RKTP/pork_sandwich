@@ -18,9 +18,9 @@ public class PolynomialTest {
 
 	@Before
 	public void setUp() throws Exception {
-		x = new Variable("x",-2);
-		y = new Variable("y",1);
-		z = new Variable("z",3);
+		x = new Variable('x',-2);
+		y = new Variable('y',1);
+		z = new Variable('z',3);
 
 		ArrayList<Expression> exp = new ArrayList<>();
 		exp.add(new Power(x, new Constant(7.0),2.0));

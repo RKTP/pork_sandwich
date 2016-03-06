@@ -15,7 +15,7 @@ public class AddTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		variable = new Variable("x", 5.0);
+		variable = new Variable('x', 5.0);
 		ArrayList<Expression> exp = new ArrayList<Expression>();
 		exp.add(new Power(variable, new Constant(1.0)));
 		exp.add(new Constant(1.5));

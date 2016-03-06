@@ -15,7 +15,7 @@ public class MultiplyTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		x = new Variable("x",2.0);
+		x = new Variable('x',2.0);
 		ArrayList<Expression> leftExp = new ArrayList<Expression>();
 		leftExp.add(new Power(x, new Constant(1.0)));
 		leftExp.add(new Constant(2.0));

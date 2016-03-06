@@ -13,7 +13,7 @@ public class LogarithmTest {
 
 	@Before
 	public void setUp() throws Exception {
-		x = new Variable("x", 12.0);
+		x = new Variable('x', 12.0);
 		log = new Logarithm(new Constant(5.0),new Power(x,new Constant(1.0)),1.2);
 	}
 

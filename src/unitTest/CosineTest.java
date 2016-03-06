@@ -13,7 +13,7 @@ public class CosineTest {
 
 	@Before
 	public void setUp() throws Exception {
-		x = new Variable("x", Math.PI/4);
+		x = new Variable('x', Math.PI/4);
 		cos = new Cosine(new Power(x, new Constant(1.0)),2.0);
 	}
 

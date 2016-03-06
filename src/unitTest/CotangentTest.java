@@ -13,7 +13,7 @@ public class CotangentTest {
 
 	@Before
 	public void setUp() throws Exception {
-		x = new Variable("x", Math.PI/8);
+		x = new Variable('x', Math.PI/8);
 		cot = new Cotangent(new Power(x, new Constant(1.0)),3.0);
 	}
 
