@@ -45,5 +45,7 @@ public class Function {
 		return this.formula.derivative(var);
 	}
 
-
+	public double calc() throws Exception {
+		return this.formula.calc();
+	}
 }
