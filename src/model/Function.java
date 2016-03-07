@@ -51,4 +51,14 @@ public class Function {
 	public double calc() throws Exception {
 		return this.formula.calc();
 	}
+	
+	public boolean isContinuous() {
+		
+		return false;
+	}
+	
+	public boolean isDerivativable() {
+		
+		return false;
+	}
 }
