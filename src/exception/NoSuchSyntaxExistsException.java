@@ -1,5 +1,5 @@
 package exception;
 
-public class NotImplementedException extends Exception {
+public class NoSuchSyntaxExistsException extends Exception {
 
 }
