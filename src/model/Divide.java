@@ -2,7 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
-import exception.ValueException;
+import exception.NumberOfVariableMismatchException;
 
 public class Divide extends Expression {
 	private Expression left, right;
@@ -48,7 +48,7 @@ public class Divide extends Expression {
 
 	@Override
 	public double calc() throws Exception {
-		if (this.right.calc() == 0) throw new ValueException();
+		if (this.right.calc() == 0) throw new NumberOfVariableMismatchException();
 		else return this.left.calc() / this.right.calc() * this.coefficient;
 	}
 

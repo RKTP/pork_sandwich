@@ -3,29 +3,29 @@ package model;
 import java.lang.Math;
 import java.util.ArrayList;
 
-import exception.NotImplementedException;
+import exception.NoSuchSyntaxExistsException;
 
 public class Power extends Expression {
 	Term variable;
 	Expression power;
 	
-	public Power(Term variable, Expression power) throws NotImplementedException {
+	public Power(Term variable, Expression power) throws NoSuchSyntaxExistsException {
 		this.variable = variable;
 		this.power = power;
 		
 		if(variable instanceof Variable) this.varList.add((Variable)variable);
 		else if(variable instanceof Expression) this.varList.addAll(((Expression)variable).getUsingVariables());
-		else throw new NotImplementedException();
+		else throw new NoSuchSyntaxExistsException();
 	}
 	
-	public Power(Term variable, Expression power, double co) throws NotImplementedException {
+	public Power(Term variable, Expression power, double co) throws NoSuchSyntaxExistsException {
 		this.variable = variable;
 		this.power = power;
 		this.coefficient = co;
 		
 		if(variable instanceof Variable) this.varList.add((Variable)variable);
 		else if(variable instanceof Expression) this.varList.addAll(((Expression)variable).getUsingVariables());
-		else throw new NotImplementedException();
+		else throw new NoSuchSyntaxExistsException();
 	}
 	
 	@Override
@@ -46,7 +46,7 @@ public class Power extends Expression {
 	}
 
 	@Override
-	public Expression integrate(Variable var) throws NotImplementedException {
+	public Expression integrate(Variable var) throws NoSuchSyntaxExistsException {
 		if(!(this.variable instanceof Expression)) {
 			ArrayList<Expression> exp = new ArrayList<Expression>();
 			exp.add(this.power);

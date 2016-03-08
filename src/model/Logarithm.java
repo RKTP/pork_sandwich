@@ -2,6 +2,8 @@ package model;
 
 import java.lang.Math;
 
+import exception.OutOfRangeException;
+
 public class Logarithm extends Expression {
 	Expression base;
 	Expression param;
@@ -40,6 +42,9 @@ public class Logarithm extends Expression {
 
 	@Override
 	public double calc() throws Exception {
+		if(this.param.calc()< 0 || this.base.calc() < 0) {
+			throw new OutOfRangeException();
+		}
 		return Math.log(this.param.calc()) / Math.log(this.base.calc()) * this.coefficient;
 	}
 
