@@ -9,35 +9,23 @@ public class Power extends Expression {
 	Term variable;
 	Expression power;
 	
-	public Power(Term variable, Expression power) {
+	public Power(Term variable, Expression power) throws NotImplementedException {
 		this.variable = variable;
 		this.power = power;
 		
 		if(variable instanceof Variable) this.varList.add((Variable)variable);
 		else if(variable instanceof Expression) this.varList.addAll(((Expression)variable).getUsingVariables());
-		else {
-			try {
-				throw new NotImplementedException();
-			} catch (NotImplementedException e) {
-				e.printStackTrace();
-			}
-		}
+		else throw new NotImplementedException();
 	}
 	
-	public Power(Term variable, Expression power, double co) {
+	public Power(Term variable, Expression power, double co) throws NotImplementedException {
 		this.variable = variable;
 		this.power = power;
 		this.coefficient = co;
 		
 		if(variable instanceof Variable) this.varList.add((Variable)variable);
 		else if(variable instanceof Expression) this.varList.addAll(((Expression)variable).getUsingVariables());
-		else {
-			try {
-				throw new NotImplementedException();
-			} catch (NotImplementedException e) {
-				e.printStackTrace();
-			}
-		}
+		else throw new NotImplementedException();
 	}
 	
 	@Override
@@ -58,7 +46,7 @@ public class Power extends Expression {
 	}
 
 	@Override
-	public Expression integrate(Variable var) {
+	public Expression integrate(Variable var) throws NotImplementedException {
 		if(!(this.variable instanceof Expression)) {
 			ArrayList<Expression> exp = new ArrayList<Expression>();
 			exp.add(this.power);

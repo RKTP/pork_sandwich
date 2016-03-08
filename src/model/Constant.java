@@ -13,7 +13,7 @@ public class Constant extends Expression {
 	}
 
 	@Override
-	public Expression integrate(Variable var) {
+	public Expression integrate(Variable var) throws Exception {
 		return new Multiply(this, new Power(var, new Constant(1.0)));
 	}
 
