@@ -1,6 +1,6 @@
 package exception;
 
-public class ValueException extends Exception {
+public class NumberOfVariableMismatchException extends Exception {
 	private static final long serialVersionUID = -735910073988166791L;
 	
 }
