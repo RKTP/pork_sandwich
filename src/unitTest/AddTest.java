@@ -25,12 +25,12 @@ public class AddTest {
 
 	@Test
 	public void testCalc() throws Exception {
-		assertEquals(add.calc() , 6.5, 0.0000001);
+		assertEquals(6.5, add.calc(), 0.0000001);
 	}
 	
 	@Test
 	public void testderiv() throws Exception {
-		assertEquals(add.derivative(variable).calc(), 1.0, 0.0000001);
+		assertEquals(1.0, add.derivative(variable).calc(), 0.0000001);
 	}
 
 }

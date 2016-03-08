@@ -19,12 +19,12 @@ public class SecantTest {
 
 	@Test
 	public void testCalc() throws Exception {
-		assertEquals(sec.calc()/-2.7 , 1.414213562373095048, 0.0000001);
+		assertEquals(1.414213562373095048, sec.calc()/-2.7, 0.0000001);
 	}
 	
 	@Test
 	public void testderiv() throws Exception {
-		assertEquals(sec.derivative(x).calc()/-2.7, 1.414213562373095048, 0.0000001);
+		assertEquals(1.414213562373095048, sec.derivative(x).calc()/-2.7, 0.0000001);
 	}
 
 }

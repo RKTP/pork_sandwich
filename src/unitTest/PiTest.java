@@ -17,12 +17,12 @@ public class PiTest {
 
 	@Test
 	public void testCalc() throws Exception {
-		assertEquals(pi.calc() , Math.PI, 0.0000001);
+		assertEquals(Math.PI, pi.calc(), 0.0000001);
 	}
 
 	@Test
 	public void testderiv() throws Exception {
-		assertEquals(pi.derivative(null).calc(), 0.0, 0.0000001);
+		assertEquals(0.0, pi.derivative(null).calc(), 0.0000001);
 	}
 
 }

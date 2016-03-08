@@ -20,12 +20,12 @@ public class TangentTest {
 	@Test
 	public void testCalc() throws Exception {
 		System.out.println(tan.calc());
-		assertEquals(tan.calc()/9 , 1.0, 0.0000001);
+		assertEquals(1.0, tan.calc()/9, 0.0000001);
 	}
 	
 	@Test
 	public void testderiv() throws Exception {
-		assertEquals(tan.derivative(x).calc()/9, 2.0, 0.0000001);
+		assertEquals(2.0, tan.derivative(x).calc()/9, 0.0000001);
 	}
 
 }

@@ -30,12 +30,12 @@ public class MultiplyTest {
 
 	@Test
 	public void testCalc() throws Exception {
-		assertEquals(mul.calc() , -12.0, 0.0000001);
+		assertEquals(-12.0, mul.calc(), 0.0000001);
 	}
 	
 	@Test
 	public void testderiv() throws Exception {
-		assertEquals(mul.derivative(x).calc(), -19.0, 0.0000001);
+		assertEquals(-19.0, mul.derivative(x).calc(), 0.0000001);
 	}
 
 }

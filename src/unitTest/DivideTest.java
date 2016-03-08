@@ -31,12 +31,12 @@ public class DivideTest {
 
 	@Test
 	public void testCalc() throws Exception {
-		assertEquals(div.calc() , -1.0, 0.0000001);
+		assertEquals(-1.0, div.calc(), 0.0000001);
 	}
 	
 	@Test
 	public void testderiv() throws Exception {
-		assertEquals(div.derivative(x).calc(), -1.0, 0.0000001);
+		assertEquals(-1.0, div.derivative(x).calc(), 0.0000001);
 	}
 
 }

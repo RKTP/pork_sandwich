@@ -19,12 +19,12 @@ public class CosineTest {
 
 	@Test
 	public void testCalc() throws Exception {
-		assertEquals(cos.calc()/2, 0.707106781186547524, 0.0000001);
+		assertEquals(0.707106781186547524, cos.calc()/2, 0.0000001);
 	}
 	
 	@Test
 	public void testderiv() throws Exception {
-		assertEquals(cos.derivative(x).calc()/2 , -0.7071067811865475, 0.0000001);
+		assertEquals(-0.7071067811865475, cos.derivative(x).calc()/2, 0.0000001);
 	}
 
 }

@@ -17,11 +17,11 @@ public class EulerTest {
 
 	@Test
 	public void testCalc() throws Exception {
-		assertEquals(euler.calc() , Math.E, 0.0000001);
+		assertEquals(Math.E, euler.calc(), 0.0000001);
 	}
 
 	@Test
 	public void testderiv() throws Exception {
-		assertEquals(euler.derivative(null).calc(), 0.0, 0.0000001);
+		assertEquals(0.0, euler.derivative(null).calc(), 0.0000001);
 	}
 }

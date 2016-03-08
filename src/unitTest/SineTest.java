@@ -19,12 +19,12 @@ public class SineTest {
 
 	@Test
 	public void testCalc() throws Exception {
-		assertEquals(sin.calc()/0.002 , 0.7071067811865475, 0.0000001);
+		assertEquals(0.7071067811865475, sin.calc()/0.002, 0.0000001);
 	}
 	
 	@Test
 	public void testderiv() throws Exception {
-		assertEquals(sin.derivative(x).calc()/0.002, 0.707106781186547524, 0.0000001);
+		assertEquals(0.707106781186547524, sin.derivative(x).calc()/0.002, 0.0000001);
 	}
 
 }

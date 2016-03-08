@@ -19,12 +19,12 @@ public class CotangentTest {
 
 	@Test
 	public void testCalc() throws Exception {
-		assertEquals(cot.calc()/3 , 2.414213562373095048, 0.0000001);
+		assertEquals(2.414213562373095048, cot.calc()/3, 0.0000001);
 	}
 	
 	@Test
 	public void testderiv() throws Exception {
-		assertEquals(cot.derivative(x).calc()/3, -6.8284271247461900976, 0.0000001);
+		assertEquals(-6.8284271247461900976, cot.derivative(x).calc()/3, 0.0000001);
 	}
 
 }

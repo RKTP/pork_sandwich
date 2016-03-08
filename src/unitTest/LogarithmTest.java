@@ -19,12 +19,12 @@ public class LogarithmTest {
 
 	@Test
 	public void testCalc() throws Exception {
-		assertEquals(log.calc()/1.2 , 1.5439593106327713964, 0.0000001);
+		assertEquals(1.5439593106327713964, log.calc()/1.2, 0.0000001);
 	}
 	
 	@Test
 	public void testderiv() throws Exception {
-		assertEquals(log.derivative(x).calc()/1.2, 0.0517779112133009, 0.0000001);
+		assertEquals(0.0517779112133009, log.derivative(x).calc()/1.2, 0.0000001);
 	}
 
 }

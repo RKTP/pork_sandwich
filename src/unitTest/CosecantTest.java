@@ -19,12 +19,12 @@ public class CosecantTest {
 
 	@Test
 	public void testCalc() throws Exception {
-		assertEquals(csc.calc()/2 , 2.61312592975275305, 0.0000001);
+		assertEquals(2.61312592975275305, csc.calc()/2,  0.0000001);
 	}
 	
 	@Test
 	public void testderiv() throws Exception {
-		assertEquals(csc.derivative(x).calc()/2, -6.308644059797900080, 0.0000001);
+		assertEquals(-6.308644059797900080, csc.derivative(x).calc()/2, 0.0000001);
 	}
 
 }

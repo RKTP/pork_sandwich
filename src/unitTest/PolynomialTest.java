@@ -42,13 +42,13 @@ public class PolynomialTest {
 
 	@Test
 	public void testCalc() throws Exception {
-		assertEquals(term.calc() , -300, 0.0000001);
-		assertEquals(pTerm.calc(), 38, 0.0000001);
+		assertEquals(-300, term.calc(), 0.0000001);
+		assertEquals(38, pTerm.calc(), 0.0000001);
 	}
 	
 	@Test
 	public void testderiv() throws Exception {
-		assertEquals(term.derivative(x).calc(), 1043.0, 0.0000001);
-		assertEquals(pTerm.derivative(x).calc(), 3, 0.0000001);
+		assertEquals(1043.0, term.derivative(x).calc(), 0.0000001);
+		assertEquals(3, pTerm.derivative(x).calc(), 0.0000001);
 	}
 }
