@@ -19,7 +19,6 @@ public class TangentTest {
 
 	@Test
 	public void testCalc() throws Exception {
-		System.out.println(tan.calc());
 		assertEquals(1.0, tan.calc()/9, 0.0000001);
 	}
 	
