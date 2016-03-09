@@ -4,6 +4,8 @@ import exception.*;
 
 import java.util.*;
 
+import org.jfree.data.xy.XYSeries;
+
 public class Function {
 	private Map<Character, Variable> varMap;
 	private Expression formula;
@@ -117,5 +119,29 @@ public class Function {
 	public String stringify() {
 		String str = this.formula.stringify();
 		return str;
+	}
+	
+	public Set<Character> getVarNames() {
+		return this.varMap.keySet();
+	}
+	
+	public XYSeries getPlotSample(double underbound, double upperbound, int pxl) throws Exception {
+		if(this.varMap.size() != 1) {
+			throw new NumberOfVariableMismatchException();
+		}
+		
+		XYSeries plotData = new XYSeries("function");
+		double step = (upperbound - underbound)/pxl;
+		double currentPos = underbound;
+		char varName = varMap.keySet().iterator().next();
+		Variable var = varMap.get(varName);
+		
+		while(currentPos <= upperbound) {
+			var.setValue(currentPos);
+			plotData.add(currentPos, this.calc());
+			currentPos += step;
+		}
+		
+		return plotData;
 	}
 }
