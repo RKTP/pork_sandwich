@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 import model.*;
+import userInterface.GraphInterface;
 
 public class Application {
 
@@ -37,6 +38,16 @@ public class Application {
 		System.out.println(func.calc());
 		System.out.println(func.getDerivative('x').stringify());
 		System.out.println(func.getDerivative('x').calc());
+		
+		add.removeAll(add);
+		
+		add.add(new Power(x,new Constant(3.0)));
+		add.add(new Power(x,new Constant(2.0),-9));
+		add.add(new Power(x,new Constant(1.0),6));
+		add.add(new Constant(2.0));
+		exp = new Add(add);
+		func = new Function(exp);
+		new GraphInterface(func, -5, 5).setVisible(true);
 	}
 
 }
