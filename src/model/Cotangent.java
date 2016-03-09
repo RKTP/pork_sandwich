@@ -36,7 +36,13 @@ public class Cotangent extends Trigonometric {
 
 	@Override
 	public String stringify() {
-		return "cot(" + this.variable.stringify() + ")";
+		String coeff = "";
+		if(this.coefficient == -1) {
+			coeff = "-";
+		} else if(this.coefficient != 1) {
+			coeff = this.coeffToString();
+		}
+		return coeff + "cot(" + this.variable.stringify() + ")";
 	}
 
 }

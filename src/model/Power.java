@@ -37,9 +37,12 @@ public class Power extends Expression {
 		ArrayList<Expression> exp = new ArrayList<Expression>();
 		exp.add(this.power);
 		exp.add(new Constant(-1.0));
+		
+		Expression newPow = new Add(exp);
+		double newCoeff = this.coefficient * this.power.calc();
 
 		if(!(this.variable instanceof Expression)) {
-			return new Multiply(this.power, new Power(this.variable, new Add(exp)), this.coefficient);
+			return new Power(this.variable, newPow, newCoeff);
 		} else {
 			return new Multiply(new Multiply(this.power, new Power(this.variable, new Add(exp)), this.coefficient), ((Expression) this.variable).derivative(var));
 		}
@@ -65,7 +68,28 @@ public class Power extends Expression {
 
 	@Override
 	public String stringify() {
-		return this.variable.stringify() + "^" + this.power.stringify();
+		String coeff = "";
+		String str = "";
+		if(this.coefficient == -1) {
+			coeff = "-";
+		} else if(this.coefficient != 1) {
+			coeff = this.coeffToString();
+		}
+		try {
+			if(this.power.calc() == 1.0) return coeff + this.variable.stringify();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		if(this.variable instanceof Expression && !(this.variable instanceof Constant)) {
+			str = coeff + "(" + this.variable.stringify() + ")" + "^";
+		} else str = coeff + this.variable.stringify() + "^";
+		
+		if(this.power instanceof Expression && !(this.power instanceof Constant)) {
+			str += "(" + this.power.stringify() + ")";
+		} else str+= this.power.stringify();
+		return str;
+		
 	}
 
 }

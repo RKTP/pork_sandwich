@@ -50,7 +50,14 @@ public class Logarithm extends Expression {
 
 	@Override
 	public String stringify() {
-		return "log(" + base.stringify() + " | " + param.stringify() + ")";
+		String coeff = "";
+		if(this.coefficient == -1) {
+			coeff = "-";
+		} else if(this.coefficient != 1) {
+			coeff = this.coeffToString();
+		}
+		
+		return coeff + "log(" + base.stringify() + " | " + param.stringify() + ")";
 	}
 
 }

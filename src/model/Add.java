@@ -67,9 +67,27 @@ public class Add extends Expression {
 	public String stringify() {
 		String expression = "";
 		
-		/*
-		 * to be implemented
-		 */
+		try {
+			for(int i = 0; i < this.exp.size(); i++) {
+				Expression elem = this.exp.get(i);
+				if(elem instanceof Constant && elem.calc() == 0) {
+					continue;
+				}
+				if(i > 0) {
+					if(!elem.isCoeffPositive()) {
+						elem.setNegativeCoeff();
+						expression += " - " + elem.stringify();
+						elem.setNegativeCoeff();
+					} else {
+						expression += " + " + elem.stringify();
+					}
+				} else {
+					expression += elem.stringify();
+				}
+			}
+		} catch(Exception e) {
+			
+		}
 		
 		return expression;
 	}

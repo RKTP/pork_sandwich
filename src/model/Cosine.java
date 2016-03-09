@@ -38,7 +38,14 @@ public class Cosine extends Trigonometric {
 
 	@Override
 	public String stringify() {
-		return "cos(" + this.variable.stringify() + ")";
+		String coeff = "";
+		if(this.coefficient == -1) {
+			coeff = "-";
+		} else if(this.coefficient != 1) {
+			coeff = this.coeffToString();
+		}
+		
+		return coeff + "cos(" + this.variable.stringify() + ")";
 	}
 
 }

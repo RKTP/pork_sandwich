@@ -116,7 +116,6 @@ public class Function {
 	 */
 	public String stringify() {
 		String str = this.formula.stringify();
-		System.out.println(str);
 		return str;
 	}
 }

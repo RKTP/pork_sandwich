@@ -36,7 +36,14 @@ public class Cosecant extends Trigonometric {
 
 	@Override
 	public String stringify() {
-		return "csc(" + this.variable.stringify() + ")";
+		String coeff = "";
+		if(this.coefficient == -1) {
+			coeff = "-";
+		} else if(this.coefficient != 1) {
+			coeff = this.coeffToString();
+		}
+		
+		return coeff + "csc(" + this.variable.stringify() + ")";
 	}
 
 }

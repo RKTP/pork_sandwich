@@ -38,7 +38,14 @@ public class Sine extends Trigonometric {
 
 	@Override
 	public String stringify() {
-		return "sin(" + this.variable.stringify() + ")";
+		String coeff = "";
+		if(this.coefficient == -1) {
+			coeff = "-";
+		} else if(this.coefficient != 1) {
+			coeff = this.coeffToString();
+		}
+		
+		return coeff + "sin(" + this.variable.stringify() + ")";
 	}
 
 }

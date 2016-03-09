@@ -6,8 +6,8 @@ public class Constant extends Expression {
 	public Constant(double value) {
 		if(value < 0) {
 			setNegativeCoeff();
-			this.value = -value;
-		} else this.value = value;
+		}
+		this.value = Math.abs(value);
 	}
 	
 	@Override
@@ -27,7 +27,12 @@ public class Constant extends Expression {
 
 	@Override
 	public String stringify() {
-		return Double.toString(this.value);
+		String str = "";
+		if(!this.isCoeffPositive()) str += "-";
+		
+		if(this.value == Math.floor(this.value)) {
+			return str + Integer.toString((int)this.value);
+		} else return str + Double.toString(this.value);
 	}
 
 }

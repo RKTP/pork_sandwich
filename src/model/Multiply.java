@@ -52,7 +52,36 @@ public class Multiply extends Expression {
 
 	@Override
 	public String stringify() {
-		return this.left.stringify() + " * " + this.right.stringify();
+		String leftString, rightString;
+		try {
+			if(this.left instanceof Constant) {
+				double cRight = this.right.getCoeff();
+				this.right.setCoeff(this.right.getCoeff() * this.left.calc());
+				String str = this.right.stringify();
+				this.right.setCoeff(cRight);
+				return str;
+			} else if(this.right instanceof Constant) {
+				double cLeft = this.left.getCoeff();
+				this.left.setCoeff(this.left.getCoeff() * this.right.calc());
+				String str = this.left.stringify();
+				this.left.setCoeff(cLeft);
+				return str;
+			} else if(this.left instanceof Constant && this.right instanceof Constant) {
+				return new Constant(this.left.calc() * this.right.calc()).stringify();
+			}
+		} catch (Exception e) {
+			//pass
+		}
+		
+		if(this.left instanceof Add) {
+			leftString = "("+this.left.stringify()+")";
+		} else leftString = this.left.stringify();
+		
+		if(this.right instanceof Add) {
+			rightString = "("+this.right.stringify()+")";
+		} else rightString = this.right.stringify();
+		
+		return leftString + " * " + rightString;
 	}
 
 }

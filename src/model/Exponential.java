@@ -29,7 +29,7 @@ public class Exponential extends Expression {
 			return new Constant(0.0);
 		}
 
-		return new Multiply(new Multiply(new Exponential(this.base, this.variable), new Logarithm(this.base, new Euler()), this.coefficient), this.variable.derivative(var));
+		return new Multiply(new Multiply(new Exponential(this.base, this.variable), new Logarithm(new Euler(), this.base), this.coefficient), this.variable.derivative(var));
 	}
 
 	@Override
@@ -44,7 +44,14 @@ public class Exponential extends Expression {
 
 	@Override
 	public String stringify() {
-		return this.base.stringify() + "^" + this.variable.stringify();
+		String coeff = "";
+		if(this.coefficient == -1) {
+			coeff = "-";
+		} else if(this.coefficient != 1) {
+			coeff = this.coeffToString();
+		}
+		
+		return coeff + this.base.stringify() + "^" +  "(" +  this.variable.stringify()  + ")";
 	}
 
 }

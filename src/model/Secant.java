@@ -36,7 +36,14 @@ public class Secant extends Trigonometric {
 
 	@Override
 	public String stringify() {
-		return "sec(" + this.variable.stringify() + ")";
+		String coeff = "";
+		if(this.coefficient == -1) {
+			coeff = "-";
+		} else if(this.coefficient != 1) {
+			coeff = this.coeffToString();
+		}
+		
+		return coeff + "sec(" + this.variable.stringify() + ")";
 	}
 
 }
