@@ -4,7 +4,10 @@ public class Constant extends Expression {
 	private double value;
 	
 	public Constant(double value) {
-		this.value = value;
+		if(value < 0) {
+			setNegativeCoeff();
+			this.value = -value;
+		} else this.value = value;
 	}
 	
 	@Override
@@ -19,7 +22,7 @@ public class Constant extends Expression {
 
 	@Override
 	public double calc() {
-		return this.value;
+		return this.value * this.coefficient;
 	}
 
 	@Override
