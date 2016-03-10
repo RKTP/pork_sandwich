@@ -10,10 +10,31 @@ public class Function {
 	private Map<Character, Variable> varMap;
 	private Expression formula;
 	private final double interval = 0.000000001;
+	private String functionName;
 
+	public Function(Expression formula, String name) throws Exception {
+		this.formula = formula;
+		this.varMap = new HashMap<>();
+		this.functionName = name;
+		
+		Set<Variable> varList = formula.getUsingVariables();
+		Iterator<Variable> it = varList.iterator();
+
+		for(;it.hasNext();) {
+			Variable v = it.next();
+			if(this.varMap.containsKey(v.getName())) {
+				throw new VariableAlreadyExistsException();
+			} else {
+				this.varMap.put(v.getName(),v);
+			}
+		}
+	}
+	
 	public Function(Expression formula) throws Exception {
 		this.formula = formula;
 		this.varMap = new HashMap<>();
+		this.functionName = "";
+		
 		Set<Variable> varList = formula.getUsingVariables();
 		Iterator<Variable> it = varList.iterator();
 
@@ -39,7 +60,18 @@ public class Function {
 
 		for(;it.hasNext();) {
 			Character key = it.next();
-			Function dFunction = new Function(this.formula.derivative(this.varMap.get(key)));
+			Function dFunction = new Function(this.formula.derivative(this.varMap.get(key)), "Derivative-" + this.functionName);
+			derivativeList.add(dFunction);
+		}
+
+		return derivativeList;
+	}
+	
+	public ArrayList<Function> getDerivative(ArrayList<Character> targetVars) throws Exception {
+		ArrayList<Function> derivativeList = new ArrayList<>();
+
+		for(char e : targetVars) {
+			Function dFunction = new Function(this.formula.derivative(this.varMap.get(e)), "Derivative-" + this.functionName);
 			derivativeList.add(dFunction);
 		}
 
@@ -47,8 +79,28 @@ public class Function {
 	}
 
 	public Function getDerivative(char varName) throws Exception {
-		Function dFunction = new Function(this.formula.derivative(this.varMap.get(varName)));
+		Function dFunction = new Function(this.formula.derivative(this.varMap.get(varName)), "Derivative-" + this.functionName);
 		return dFunction;
+	}
+	
+	public Function getIntegra(char varName) throws Exception {
+		Function iFunction = new Function(this.formula.integrate(this.varMap.get(varName)), "Integral-" + this.functionName);
+		return iFunction;
+	}
+	
+	public double getIntegraInRange(char varName, double under, double upper) throws Exception {
+		Variable var = this.varMap.get(varName);
+		Function dFunction = new Function(this.formula.integrate(this.varMap.get(var)));
+		double recentVal = var.calc();
+		
+		var.setValue(under);
+		double underIntegra = dFunction.calc();
+		
+		var.setValue(upper);
+		double upperIntegra = dFunction.calc();
+		
+		var.setValue(recentVal);
+		return upperIntegra - underIntegra;
 	}
 
 	public double calc() throws Exception {

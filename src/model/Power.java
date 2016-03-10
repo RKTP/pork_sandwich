@@ -3,6 +3,7 @@ package model;
 import java.lang.Math;
 import java.util.ArrayList;
 
+import exception.CannotIntegrateException;
 import exception.NoSuchSyntaxExistsException;
 
 public class Power extends Expression {
@@ -49,7 +50,11 @@ public class Power extends Expression {
 	}
 
 	@Override
-	public Expression integrate(Variable var) throws NoSuchSyntaxExistsException {
+	public Expression integrate(Variable var) throws NoSuchSyntaxExistsException, CannotIntegrateException {
+		if(!this.varList.contains(var)) {
+			throw new CannotIntegrateException();
+		}
+		
 		if(!(this.variable instanceof Expression)) {
 			ArrayList<Expression> exp = new ArrayList<Expression>();
 			exp.add(this.power);
