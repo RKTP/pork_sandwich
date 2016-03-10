@@ -48,6 +48,14 @@ public class Application {
 		exp = new Add(add);
 		func = new Function(exp);
 		new GraphInterface(func, -5, 5).setVisible(true);
+		
+		Function iFunc = func.getIntegra('x');
+		new GraphInterface(iFunc, -5,5).setVisible(true);
+		
+		Function idFunc = iFunc.getDerivative('x');
+		new GraphInterface(idFunc,-5,5).setVisible(true);
+		
+		
 	}
 
 }
