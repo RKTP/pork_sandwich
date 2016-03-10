@@ -5,11 +5,25 @@ import java.util.ArrayList;
 public class Add extends Expression {
 	private ArrayList<Expression> exp;
 	
-	public Add(ArrayList<Expression> exp) {
-		this.exp = exp;
+	public Add(ArrayList<Expression> exps) {
+		//this.exp = exp;
+		this.exp = new ArrayList<>();
+		double constantSum = 0;
 		
-		for(Expression e : exp) {
+		for(Expression e : exps) {
+			if(e instanceof Constant) {
+				try {
+					constantSum += e.calc();
+					continue;
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+			this.exp.add(e);
 			this.varList.addAll(e.getUsingVariables());
+		}
+		if(constantSum != 0 || exp.isEmpty()) {
+			exp.add(new Constant(constantSum));
 		}
 	}
 	
@@ -41,6 +55,10 @@ public class Add extends Expression {
 
 	@Override
 	public Expression integrate(Variable var) throws Exception {
+		if(!this.varList.contains(var)) {
+			return new Constant(0.0);
+		}
+		
 		ArrayList<Expression> iexp = new ArrayList<Expression>();
 		
 		for(Expression e : this.exp) {
@@ -66,11 +84,12 @@ public class Add extends Expression {
 	@Override
 	public String stringify() {
 		String expression = "";
-		
+		double constantSum = 0;
+
 		try {
 			for(int i = 0; i < this.exp.size(); i++) {
 				Expression elem = this.exp.get(i);
-				if(elem instanceof Constant && elem.calc() == 0) {
+				if(elem instanceof Constant && elem.calc() == 0 && this.exp.size()>1) {
 					continue;
 				}
 				if(i > 0) {

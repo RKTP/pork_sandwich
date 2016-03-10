@@ -41,6 +41,22 @@ public class FunctionTest {
 	}
 	
 	@Test
+	public void testSetVariableValue() {
+		pfunc.setVariableValue('x', 5.0);
+		assertEquals(5.0,x.calc(),0.0000001);
+	}
+	
+	@Test
+	public void testIntegra() {
+		
+	}
+	
+	public void testIntegraInRange() {
+		
+	}
+	
+	
+	@Test
 	public void testIsContinuous() throws Exception {
 		assertEquals(true, func.isContinuous(-2));
 	}

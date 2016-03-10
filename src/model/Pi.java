@@ -18,6 +18,6 @@ public class Pi extends Constant {
 	
 	@Override
 	public String stringify() {
-		return "¥ð";
+		return "PI";
 	}
 }

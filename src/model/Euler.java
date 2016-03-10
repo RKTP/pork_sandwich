@@ -18,6 +18,6 @@ public class Euler extends Constant {
 	
 	@Override
 	public String stringify() {
-		return "e";
+		return "E";
 	}
 }
