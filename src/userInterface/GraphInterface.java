@@ -15,14 +15,17 @@ public class GraphInterface extends JFrame {
 	private Function function;
 	private double under, upper;
 	public GraphInterface(Function func, double underbound, double upperbound) {
-		super("2D Graph Plot");
+		super(func.getFunctionName());
 		this.function = func;
 		this.under = underbound;
 		this.upper = upperbound;
 		
 		JPanel chartPanel = createChartPanel();
+		JLabel formulaLabel = new JLabel(this.function.stringify());
+		formulaLabel.setHorizontalAlignment(JLabel.CENTER);
 		
 		setSize(800,600);
+		this.add(formulaLabel, BorderLayout.NORTH);
 		this.add(chartPanel, BorderLayout.CENTER);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
