@@ -1,5 +1,7 @@
 package parser;
 
-public abstract class Parser {
-
+public class StringParser {
+	//public Expression buildFormula() {
+	//	
+	//}
 }

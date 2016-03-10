@@ -23,8 +23,8 @@ public class GraphInterface extends JFrame {
 		JPanel chartPanel = createChartPanel();
 		
 		setSize(800,600);
-		add(chartPanel, BorderLayout.CENTER);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.add(chartPanel, BorderLayout.CENTER);
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 	
 	private JPanel createChartPanel() {

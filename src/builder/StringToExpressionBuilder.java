@@ -1,5 +1,8 @@
 package builder;
 
-public class StringToExpressionBuilder {
+import model.Expression;
 
+public class StringToExpressionBuilder {
+	//public Expression ExpressionFactory(String string) {
+	//}
 }
