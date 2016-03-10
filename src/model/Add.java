@@ -84,12 +84,11 @@ public class Add extends Expression {
 	@Override
 	public String stringify() {
 		String expression = "";
-		double constantSum = 0;
 
 		try {
 			for(int i = 0; i < this.exp.size(); i++) {
 				Expression elem = this.exp.get(i);
-				if(elem instanceof Constant && elem.calc() == 0 && this.exp.size()>1) {
+				if(elem instanceof Constant && elem.stringify().equals("0") && this.exp.size()>1) {
 					continue;
 				}
 				if(i > 0) {
