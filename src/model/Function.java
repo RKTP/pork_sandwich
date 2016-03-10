@@ -52,6 +52,10 @@ public class Function {
 		Variable var = this.varMap.get(varName);
 		var.setValue(value);
 	}
+	
+	public String getFunctionName() {
+		return this.functionName;
+	}
 
 	public ArrayList<Function> getDerivative() throws Exception {
 		Set<Character> keySet = this.varMap.keySet();
@@ -71,7 +75,7 @@ public class Function {
 		ArrayList<Function> derivativeList = new ArrayList<>();
 
 		for(char e : targetVars) {
-			Function dFunction = new Function(this.formula.derivative(this.varMap.get(e)), "Derivative-" + this.functionName);
+			Function dFunction = new Function(this.formula.derivative(this.varMap.get(e)), "Dby" + e + this.functionName);
 			derivativeList.add(dFunction);
 		}
 
