@@ -94,14 +94,14 @@ public class Function {
 	
 	public double getIntegraInRange(char varName, double under, double upper) throws Exception {
 		Variable var = this.varMap.get(varName);
-		Function dFunction = new Function(this.formula.integrate(this.varMap.get(var)));
+		Function iFunction = new Function(this.formula.integrate(var));
 		double recentVal = var.calc();
 		
 		var.setValue(under);
-		double underIntegra = dFunction.calc();
+		double underIntegra = iFunction.calc();
 		
 		var.setValue(upper);
-		double upperIntegra = dFunction.calc();
+		double upperIntegra = iFunction.calc();
 		
 		var.setValue(recentVal);
 		return upperIntegra - underIntegra;
@@ -121,23 +121,28 @@ public class Function {
 
 		char varName = varMap.keySet().iterator().next();
 		Variable var = varMap.get(varName);
-		double midValue = this.formula.calc();
-		double diff = this.formula.derivative(var).calc();
-		double range = Math.abs(diff * this.interval * 2.0);
+		var.setValue(value);
+		try {
+			double midValue = this.formula.calc();
+			double diff = this.formula.derivative(var).calc();
+			double range = Math.abs(diff * this.interval * 2.0);
+			
+			double varValue = var.calc();
+			
+			var.setValue(varValue - this.interval);
+			double leftValue = this.formula.calc();
+			
+			var.setValue(varValue + this.interval);
+			double rightValue = this.formula.calc();
+			
+			var.setValue(varValue);
+			if(Math.abs(rightValue - midValue) < range && Math.abs(leftValue - midValue) < range) {
+				return true;
+			} else return false;
+		} catch(OutOfRangeException e) {
+			return false;
+		}
 		
-		double varValue = var.calc();
-		
-		var.setValue(varValue - this.interval);
-		double leftValue = this.formula.calc();
-		
-		var.setValue(varValue + this.interval);
-		double rightValue = this.formula.calc();
-		
-		var.setValue(varValue);
-		if(Math.abs(rightValue - midValue) < range && Math.abs(leftValue - midValue) < range) {
-			return true;
-		} else return false;
-
 	}
 	
 	public boolean isDerivativable(double value) throws Exception {
@@ -151,11 +156,12 @@ public class Function {
 		
 		char varName = varMap.keySet().iterator().next();
 		Variable var = varMap.get(varName);
+		var.setValue(value);
 		double varValue = var.calc();
 		
 		double midDiff = this.formula.derivative(var).calc();
 		double ddiff = this.formula.derivative(var).derivative(var).calc();
-		double range = ddiff * this.interval * 2.0;
+		double range = Math.abs(ddiff * this.interval * 2.0);
 		
 		var.setValue(varValue - this.interval);
 		double leftDiff = this.formula.derivative(var).calc();
