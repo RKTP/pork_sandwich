@@ -14,7 +14,7 @@ public class SecantTest {
 	@Before
 	public void setUp() throws Exception {
 		x = new Variable('x', Math.PI/4);
-		sec = new Secant(new Power(x, new Constant(1.0)),-2.7);
+		sec = new Secant(new Power(x, 1.0),-2.7);
 	}
 
 	@Test

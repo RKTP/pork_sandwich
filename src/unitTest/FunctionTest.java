@@ -24,7 +24,7 @@ public class FunctionTest {
 		pExp.add(new Power(x, new Constant(3.0)));
 		pExp.add(new Power(y, new Constant(3.0)));
 		pExp.add(new Power(z, new Constant(3.0)));
-		pExp.add(new Multiply(new Power(x, new Constant(1.0)), new Multiply(new Power(y, new Constant(1.0)), new Power(z, new Constant(1.0))),-3.0));
+		pExp.add(new Multiply(new Power(x, 1.0), new Multiply(new Power(y, 1.0), new Power(z, 1.0)),-3.0));
 		
 		func = new Function(new Sine(new Power(x,new Constant(1.0))));	//sin(x)
 		pfunc = new Function(new Add(pExp));	//x^3 + y^3 + z^3 - 3xyz

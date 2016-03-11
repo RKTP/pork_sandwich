@@ -14,7 +14,7 @@ public class ExponentialTest {
 	@Before
 	public void setUp() throws Exception {
 		x = new Variable('x', 5.0);
-		exp = new Exponential(new Euler(),new Power(x,new Constant(1.0)),1.5);
+		exp = new Exponential(new Euler(),new Power(x,1.0),1.5);
 	}
 
 	@Test

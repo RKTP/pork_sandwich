@@ -14,7 +14,7 @@ public class TangentTest {
 	@Before
 	public void setUp() throws Exception {
 		x = new Variable('x', Math.PI/4);
-		tan = new Tangent(new Power(x, new Constant(1.0)),9);
+		tan = new Tangent(new Power(x, 1.0),9);
 	}
 
 	@Test

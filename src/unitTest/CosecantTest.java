@@ -14,7 +14,7 @@ public class CosecantTest {
 	@Before
 	public void setUp() throws Exception {
 		x = new Variable('x', Math.PI/8);
-		csc = new Cosecant(new Power(x, new Constant(1.0)),2.0);
+		csc = new Cosecant(new Power(x, 1.0),2.0);
 	}
 
 	@Test

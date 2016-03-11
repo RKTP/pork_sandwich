@@ -19,6 +19,25 @@ public class Power extends Expression {
 		else throw new NoSuchSyntaxExistsException();
 	}
 	
+	public Power(Term variable, double power) throws NoSuchSyntaxExistsException {
+		this.variable = variable;
+		this.power = new Constant(power);
+		
+		if(variable instanceof Variable) this.varList.add((Variable)variable);
+		else if(variable instanceof Expression) this.varList.addAll(((Expression)variable).getUsingVariables());
+		else throw new NoSuchSyntaxExistsException();
+	}
+	
+	public Power(Term variable, double power, double co) throws NoSuchSyntaxExistsException {
+		this.variable = variable;
+		this.power = new Constant(power);
+		this.coefficient = co;
+		
+		if(variable instanceof Variable) this.varList.add((Variable)variable);
+		else if(variable instanceof Expression) this.varList.addAll(((Expression)variable).getUsingVariables());
+		else throw new NoSuchSyntaxExistsException();
+	}
+	
 	public Power(Term variable, Expression power, double co) throws NoSuchSyntaxExistsException {
 		this.variable = variable;
 		this.power = power;
