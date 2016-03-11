@@ -19,12 +19,18 @@ public class CosecantTest {
 
 	@Test
 	public void testCalc() throws Exception {
+		x.setValue(Math.PI/8);
 		assertEquals(2.61312592975275305, csc.calc()/2,  0.0000001);
+		x.setValue(Math.PI/2);
+		assertEquals(1, csc.calc()/2,  0.0000001);
 	}
 	
 	@Test
 	public void testderiv() throws Exception {
-		assertEquals(-6.308644059797900080, csc.derivative(x).calc()/2, 0.0000001);
+		x.setValue(Math.PI/8);
+		assertEquals(-6.308644059797900, csc.derivative(x).calc()/2, 0.0000001);
+		x.setValue(Math.PI/4);
+		assertEquals(-1.414213562373095, csc.derivative(x).calc()/2, 0.0000001);
 	}
 
 }

@@ -23,19 +23,25 @@ public class MultiplyTest {
 		rightExp.add(new Constant(1.0));
 		rightExp.add(new Power(x, new Constant(2.0), -1.0));
 		
-		left = new Add(leftExp);
-		right = new Add(rightExp);
-		mul = new Multiply(left, right);
+		left = new Add(leftExp);			//x+2
+		right = new Add(rightExp);			//1-x^2
+		mul = new Multiply(left, right);	//(x+2) * (1-x^2)
 	}
 
 	@Test
 	public void testCalc() throws Exception {
+		x.setValue(2.0);
 		assertEquals(-12.0, mul.calc(), 0.0000001);
+		x.setValue(-4.0);
+		assertEquals(30.0, mul.calc(), 0.0000001);
 	}
 	
 	@Test
 	public void testderiv() throws Exception {
+		x.setValue(2.0);
 		assertEquals(-19.0, mul.derivative(x).calc(), 0.0000001);
+		x.setValue(-4.0);
+		assertEquals(-31.0, mul.derivative(x).calc(), 0.0000001);
 	}
 
 }

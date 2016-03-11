@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
+import exception.NoSuchSyntaxExistsException;
 import exception.NumberOfVariableMismatchException;
 
 public class Divide extends Expression {
@@ -48,7 +49,7 @@ public class Divide extends Expression {
 
 	@Override
 	public double calc() throws Exception {
-		if (this.right.calc() == 0) throw new NumberOfVariableMismatchException();
+		if (this.right.calc() == 0) throw new ArithmeticException();
 		else return this.left.calc() / this.right.calc() * this.coefficient;
 	}
 

@@ -19,12 +19,18 @@ public class ExponentialTest {
 
 	@Test
 	public void testCalc() throws Exception {
+		x.setValue(5.0);
 		assertEquals(148.41315910257660342, exp.calc()/1.5, 0.0000001);
+		x.setValue(0.0);
+		assertEquals(1.0, exp.calc()/1.5, 0.0000001);
 	}
 	
 	@Test
 	public void testderiv() throws Exception {
+		x.setValue(5.0);
 		assertEquals(148.41315910257660342, exp.derivative(x).calc()/1.5, 0.0000001);
+		x.setValue(0.0);
+		assertEquals(1.0, exp.calc()/1.5, 0.0000001);
 	}
 
 }

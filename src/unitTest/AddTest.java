@@ -19,7 +19,6 @@ public class AddTest {
 		ArrayList<Expression> exp = new ArrayList<Expression>();
 		exp.add(new Power(variable, new Constant(1.0)));
 		exp.add(new Constant(1.5));
-		
 		add = new Add(exp);
 	}
 
@@ -30,6 +29,8 @@ public class AddTest {
 	
 	@Test
 	public void testderiv() throws Exception {
+		assertEquals(1.0, add.derivative(variable).calc(), 0.0000001);
+		variable.setValue(3.0);
 		assertEquals(1.0, add.derivative(variable).calc(), 0.0000001);
 	}
 
