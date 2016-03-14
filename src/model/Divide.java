@@ -62,7 +62,7 @@ public class Divide extends Expression {
 			coeff = this.coeffToString();
 		}
 		
-		return coeff + "(" + this.left.stringify() + ")" + "/" + "(" + this.right.stringify() + ")";
+		return coeff + "(" + this.left.stringify() + ")" + " / " + "(" + this.right.stringify() + ")";
 	}
 
 }
