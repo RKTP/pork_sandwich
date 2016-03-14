@@ -139,7 +139,7 @@ public class Function {
 			if(Math.abs(rightValue - midValue) < range && Math.abs(leftValue - midValue) < range) {
 				return true;
 			} else return false;
-		} catch(OutOfRangeException e) {
+		} catch(OutOfRangeException|ArithmeticException e) {
 			return false;
 		}
 		
