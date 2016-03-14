@@ -36,7 +36,7 @@ public class Multiply extends Expression {
 		exp.add(left);
 		exp.add(right);
 		
-		Expression deriv = new Add(exp, this.coefficient);
+		Expression deriv = new AddSub(exp, this.coefficient);
 		return deriv;
 	}
 
@@ -73,11 +73,11 @@ public class Multiply extends Expression {
 			//pass
 		}
 		
-		if(this.left instanceof Add) {
+		if(this.left instanceof AddSub) {
 			leftString = "("+this.left.stringify()+")";
 		} else leftString = this.left.stringify();
 		
-		if(this.right instanceof Add) {
+		if(this.right instanceof AddSub) {
 			rightString = "("+this.right.stringify()+")";
 		} else rightString = this.right.stringify();
 		

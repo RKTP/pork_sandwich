@@ -29,14 +29,14 @@ public class PolynomialTest {
 		exp.add(new Power(x, 2.0,10.0));
 		exp.add(new Power(x, 1.0,-9.0));
 		exp.add(new Constant(2));
-		term = new Add(exp);
+		term = new AddSub(exp);
 
 		ArrayList<Expression> pExp = new ArrayList<>();
 		pExp.add(new Power(x, 3.0));
 		pExp.add(new Power(y, 3.0));
 		pExp.add(new Power(z, 3.0));
 		pExp.add(new Multiply(new Power(x, 1.0), new Multiply(new Power(y, 1.0), new Power(z, 1.0)),-3.0));
-		pTerm = new Add(pExp);
+		pTerm = new AddSub(pExp);
 
 	}
 

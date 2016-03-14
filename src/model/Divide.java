@@ -37,7 +37,7 @@ public class Divide extends Expression {
 		exp.add(new Multiply(left.derivative(var), right));
 		exp.add(new Multiply(left, right.derivative(var),-1.0));
 		
-		dividee = new Add(exp);
+		dividee = new AddSub(exp);
 		divider = new Power(this.right, new Constant(2.0));
 		return new Divide(dividee, divider, this.coefficient);
 	}

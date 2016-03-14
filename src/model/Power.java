@@ -58,13 +58,13 @@ public class Power extends Expression {
 		exp.add(this.power);
 		exp.add(new Constant(-1.0));
 		
-		Expression newPow = new Add(exp);
+		Expression newPow = new AddSub(exp);
 		double newCoeff = this.coefficient * this.power.calc();
 
 		if(!(this.variable instanceof Expression)) {
 			return new Power(this.variable, newPow, newCoeff);
 		} else {
-			return new Multiply(new Multiply(this.power, new Power(this.variable, new Add(exp)), this.coefficient), ((Expression) this.variable).derivative(var));
+			return new Multiply(new Multiply(this.power, new Power(this.variable, new AddSub(exp)), this.coefficient), ((Expression) this.variable).derivative(var));
 		}
 	}
 
@@ -79,7 +79,7 @@ public class Power extends Expression {
 			exp.add(this.power);
 			exp.add(new Constant(1.0));
 			
-			return new Divide(new Power(this.variable, new Add(exp)), new Add(exp), this.coefficient);
+			return new Divide(new Power(this.variable, new AddSub(exp)), new AddSub(exp), this.coefficient);
 		} else {
 			return null;//function integration
 		}

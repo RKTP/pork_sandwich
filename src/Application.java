@@ -16,7 +16,7 @@ public class Application {
 		add.add(new Power(x,new Constant(3.0),2));
 		add.add(new Constant(-5.0));
 		Expression log = new Logarithm(new Euler(),x_var);
-		Expression exp = new Multiply(new Cosine(x_var), new Sine(new Multiply(log,new Add(add))));
+		Expression exp = new Multiply(new Cosine(x_var), new Sine(new Multiply(log,new AddSub(add))));
 		
 		func = new Function(exp);
 		
@@ -25,7 +25,7 @@ public class Application {
 		System.out.println(func.getDerivative('x').stringify());
 		System.out.println(func.getDerivative('x').calc());
 		
-		exp = new Power(new Add(add),new Constant(3.0));
+		exp = new Power(new AddSub(add),new Constant(3.0));
 		func = new Function(exp);
 		
 		System.out.println(func.stringify());
@@ -33,7 +33,7 @@ public class Application {
 		System.out.println(func.getDerivative('x').stringify());
 		System.out.println(func.getDerivative('x').calc());
 		
-		exp = new Exponential(new Constant(3.0), new Add(add));
+		exp = new Exponential(new Constant(3.0), new AddSub(add));
 		func = new Function(exp);
 		x.setValue(2.0);
 		
@@ -48,7 +48,7 @@ public class Application {
 		add.add(new Power(x,new Constant(2.0),-9));
 		add.add(new Power(x,new Constant(1.0),6));
 		add.add(new Constant(2.0));
-		exp = new Add(add);
+		exp = new AddSub(add);
 		func = new Function(exp, "testFunc");
 		new GraphInterface(func, -5, 5).setVisible(true);
 		
@@ -63,7 +63,7 @@ public class Application {
 		add.add(new Power(x, new Constant(3.0)));
 		add.add(new Power(y, new Constant(2.0),-2.0));
 		add.add(new Power(z, new Constant(1.0),1.5));
-		exp = new Add(add);
+		exp = new AddSub(add);
 		func = new Function(exp);
 		
 		ArrayList<Function> funcList = func.getDerivative();

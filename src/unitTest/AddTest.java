@@ -19,7 +19,7 @@ public class AddTest {
 		ArrayList<Expression> exp = new ArrayList<Expression>();
 		exp.add(new Power(variable, 1.0));
 		exp.add(new Constant(1.5));
-		add = new Add(exp);
+		add = new AddSub(exp);
 	}
 
 	@Test

@@ -27,12 +27,12 @@ public class FunctionTest {
 		pExp.add(new Power(y, 3.0));
 		pExp.add(new Power(z, 3.0));
 		pExp.add(new Multiply(new Power(x, 1.0), new Multiply(new Power(y, 1.0), new Power(z, 1.0)),-3.0));
-		pfunc = new Function(new Add(pExp));	//x^3 + y^3 + z^3 - 3xyz
+		pfunc = new Function(new AddSub(pExp));	//x^3 + y^3 + z^3 - 3xyz
 		
 		pExp.removeAll(pExp);
 		pExp.add(new Logarithm(new Constant(5.0), new Power(x,1.0)));
 		pExp.add(new Constant(0.5));
-		func = new Function(new Add(pExp));	//log_5(x) + 0.5
+		func = new Function(new AddSub(pExp));	//log_5(x) + 0.5
 		
 		sfunc = new Function(new Power(x, 3.0));
 

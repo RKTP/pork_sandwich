@@ -23,8 +23,8 @@ public class MultiplyTest {
 		rightExp.add(new Constant(1.0));
 		rightExp.add(new Power(x, 2.0, -1.0));
 		
-		left = new Add(leftExp);			//x+2
-		right = new Add(rightExp);			//1-x^2
+		left = new AddSub(leftExp);			//x+2
+		right = new AddSub(rightExp);			//1-x^2
 		mul = new Multiply(left, right);	//(x+2) * (1-x^2)
 	}
 
