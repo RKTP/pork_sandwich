@@ -2,10 +2,10 @@ package model;
 
 import java.util.ArrayList;
 
-public class Add extends Expression {
+public class AddSub extends Expression {
 	private ArrayList<Expression> exp;
 	
-	public Add(ArrayList<Expression> exps) {
+	public AddSub(ArrayList<Expression> exps) {
 		//this.exp = exp;
 		this.exp = new ArrayList<>();
 		double constantSum = 0;
@@ -27,7 +27,7 @@ public class Add extends Expression {
 		}
 	}
 	
-	public Add(ArrayList<Expression> exp, double co) {
+	public AddSub(ArrayList<Expression> exp, double co) {
 		this.coefficient = co;
 		this.exp = exp;
 		
@@ -48,7 +48,7 @@ public class Add extends Expression {
 			dexp.add(e.derivative(var));
 		}
 		
-		Expression deriv = new Add(dexp, this.coefficient);
+		Expression deriv = new AddSub(dexp, this.coefficient);
 		
 		return deriv;
 	}
@@ -65,7 +65,7 @@ public class Add extends Expression {
 			iexp.add(e.integrate(var));
 		}
 		
-		Expression integ = new Add(iexp, this.coefficient);
+		Expression integ = new AddSub(iexp, this.coefficient);
 		
 		return integ;
 	}
