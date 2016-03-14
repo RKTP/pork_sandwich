@@ -91,7 +91,7 @@ public class Add extends Expression {
 				if(elem instanceof Constant && elem.stringify().equals("0") && this.exp.size()>1) {
 					continue;
 				}
-				if(i > 0) {
+				if(!expression.equals("")) {
 					if(!elem.isCoeffPositive()) {
 						elem.setNegativeCoeff();
 						expression += " - " + elem.stringify();
