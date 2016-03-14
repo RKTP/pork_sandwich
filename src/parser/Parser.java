@@ -1,6 +1,6 @@
 package parser;
 
-public class StringParser {
+public class Parser {
 	//public Expression buildFormula() {
 	//	
 	//}
