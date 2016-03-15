@@ -11,7 +11,7 @@ public class AddSub extends Expression {
 		double constantSum = 0;
 		
 		for(Expression e : exps) {
-			if(e instanceof Constant) {
+			if(e instanceof Constant && !(e instanceof Promise)) {
 				try {
 					constantSum += e.calc();
 					continue;

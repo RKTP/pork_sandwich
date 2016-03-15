@@ -51,6 +51,9 @@ public class Exponential extends Expression {
 			coeff = this.coeffToString();
 		}
 		
+		if(!(this.base instanceof Euler) && !(this.base instanceof Pi)) {
+			return coeff + "*" + this.base.stringify() + "^" +  "(" +  this.variable.stringify()  + ")";
+		}
 		return coeff + this.base.stringify() + "^" +  "(" +  this.variable.stringify()  + ")";
 	}
 
