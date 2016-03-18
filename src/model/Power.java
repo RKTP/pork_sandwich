@@ -74,15 +74,13 @@ public class Power extends Expression {
 			throw new CannotIntegrateException();
 		}
 		
-		if((this.variable instanceof Variable)) {
+		if(this.variable instanceof Expression) {
 			ArrayList<Expression> exp = new ArrayList<Expression>();
 			exp.add(this.power);
 			exp.add(new Constant(1.0));
 			
 			return new Divide(new Power(this.variable, new AddSub(exp)), new AddSub(exp), this.coefficient);
-		} else {
-			return null;//function integration
-		}
+		} else throw new CannotIntegrateException();
 	}
 
 	@Override

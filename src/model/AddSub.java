@@ -2,6 +2,8 @@ package model;
 
 import java.util.ArrayList;
 
+import exception.CannotIntegrateException;
+
 public class AddSub extends Expression {
 	private ArrayList<Expression> exp;
 	
@@ -56,7 +58,7 @@ public class AddSub extends Expression {
 	@Override
 	public Expression integrate(Variable var) throws Exception {
 		if(!this.varList.contains(var)) {
-			return new Constant(0.0);
+			return new Multiply(this,var);
 		}
 		
 		ArrayList<Expression> iexp = new ArrayList<Expression>();

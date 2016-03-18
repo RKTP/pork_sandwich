@@ -2,6 +2,7 @@ package model;
 
 import java.lang.Math;
 
+import exception.CannotIntegrateException;
 import exception.OutOfRangeException;
 
 public class Logarithm extends Expression {
@@ -36,8 +37,8 @@ public class Logarithm extends Expression {
 	}
 
 	@Override
-	public Expression integrate(Variable var) {
-		return null;
+	public Expression integrate(Variable var) throws CannotIntegrateException {
+		throw new CannotIntegrateException();
 	}
 
 	@Override

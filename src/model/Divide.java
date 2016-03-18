@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
+import exception.CannotIntegrateException;
 import exception.NoSuchSyntaxExistsException;
 import exception.NumberOfVariableMismatchException;
 
@@ -43,8 +44,8 @@ public class Divide extends Expression {
 	}
 
 	@Override
-	public Expression integrate(Variable var) {
-		return null;
+	public Expression integrate(Variable var) throws CannotIntegrateException {
+		throw new CannotIntegrateException();
 	}
 
 	@Override

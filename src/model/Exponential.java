@@ -2,6 +2,8 @@ package model;
 
 import java.lang.Math;
 
+import exception.CannotIntegrateException;
+
 public class Exponential extends Expression {
 	private Expression base;
 	private Expression variable;
@@ -33,8 +35,8 @@ public class Exponential extends Expression {
 	}
 
 	@Override
-	public Expression integrate(Variable var) {
-		return null;
+	public Expression integrate(Variable var) throws CannotIntegrateException {
+		throw new CannotIntegrateException();
 	}
 
 	@Override

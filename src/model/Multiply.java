@@ -2,6 +2,8 @@ package model;
 
 import java.util.ArrayList;
 
+import exception.CannotIntegrateException;
+
 public class Multiply extends Expression {
 	private Expression left, right;
 
@@ -41,8 +43,8 @@ public class Multiply extends Expression {
 	}
 
 	@Override
-	public Expression integrate(Variable var) {
-		return null;
+	public Expression integrate(Variable var) throws CannotIntegrateException {
+		throw new CannotIntegrateException();
 	}
 
 	@Override
