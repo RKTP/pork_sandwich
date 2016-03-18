@@ -51,7 +51,7 @@ public class Multiply extends Expression {
 	}
 
 	@Override
-	public String stringify() {
+	public String stringify() throws Exception {
 		String leftString, rightString;
 		try {
 			if(this.left instanceof Constant) {
@@ -81,7 +81,12 @@ public class Multiply extends Expression {
 			rightString = "("+this.right.stringify()+")";
 		} else rightString = this.right.stringify();
 		
-		return leftString + " * " + rightString;
+		String coeff = "";
+		if(this.coefficient != 1) {
+			coeff = this.coeffToString() + "*";
+		}
+		
+		return coeff + leftString + " * " + rightString;
 	}
 
 }

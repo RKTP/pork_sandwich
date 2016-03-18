@@ -21,7 +21,12 @@ public class GraphInterface extends JFrame {
 		this.upper = upperbound;
 		
 		JPanel chartPanel = createChartPanel();
-		JLabel formulaLabel = new JLabel(this.function.stringify());
+		JLabel formulaLabel = null;
+		try {
+			formulaLabel = new JLabel(this.function.stringify());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		formulaLabel.setHorizontalAlignment(JLabel.CENTER);
 		
 		setSize(800,600);

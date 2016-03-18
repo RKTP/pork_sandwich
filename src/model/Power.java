@@ -7,10 +7,10 @@ import exception.CannotIntegrateException;
 import exception.NoSuchSyntaxExistsException;
 
 public class Power extends Expression {
-	Term variable;
+	MathTerm variable;
 	Expression power;
 	
-	public Power(Term variable, Expression power) throws NoSuchSyntaxExistsException {
+	public Power(MathTerm variable, Expression power) throws NoSuchSyntaxExistsException {
 		this.variable = variable;
 		this.power = power;
 		
@@ -19,7 +19,7 @@ public class Power extends Expression {
 		else throw new NoSuchSyntaxExistsException();
 	}
 	
-	public Power(Term variable, double power) throws NoSuchSyntaxExistsException {
+	public Power(MathTerm variable, double power) throws NoSuchSyntaxExistsException {
 		this.variable = variable;
 		this.power = new Constant(power);
 		
@@ -28,7 +28,7 @@ public class Power extends Expression {
 		else throw new NoSuchSyntaxExistsException();
 	}
 	
-	public Power(Term variable, double power, double co) throws NoSuchSyntaxExistsException {
+	public Power(MathTerm variable, double power, double co) throws NoSuchSyntaxExistsException {
 		this.variable = variable;
 		this.power = new Constant(power);
 		this.coefficient = co;
@@ -38,7 +38,7 @@ public class Power extends Expression {
 		else throw new NoSuchSyntaxExistsException();
 	}
 	
-	public Power(Term variable, Expression power, double co) throws NoSuchSyntaxExistsException {
+	public Power(MathTerm variable, Expression power, double co) throws NoSuchSyntaxExistsException {
 		this.variable = variable;
 		this.power = power;
 		this.coefficient = co;
@@ -74,7 +74,7 @@ public class Power extends Expression {
 			throw new CannotIntegrateException();
 		}
 		
-		if(!(this.variable instanceof Expression)) {
+		if((this.variable instanceof Variable)) {
 			ArrayList<Expression> exp = new ArrayList<Expression>();
 			exp.add(this.power);
 			exp.add(new Constant(1.0));
@@ -91,27 +91,21 @@ public class Power extends Expression {
 	}
 
 	@Override
-	public String stringify() {
+	public String stringify() throws Exception {
 		String coeff = "";
 		String str = "";
-		if(this.coefficient == -1) {
-			coeff = "-";
-		} else if(this.coefficient != 1) {
-			coeff = this.coeffToString();
+		if(this.coefficient != 1) {
+			coeff = this.coeffToString() + "*";
 		}
-		try {
-			if(this.power.calc() == 1.0) return coeff + this.variable.stringify();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		if(this.power.calc() == 1.0) return coeff + this.variable.stringify();
 		
 		if(this.variable instanceof Expression && !(this.variable instanceof Constant)) {
-			str = coeff + "(" + this.variable.stringify() + ")" + "^";
-		} else str = coeff + this.variable.stringify() + "^";
+			str = coeff + "pow(" + "(" + this.variable.stringify() + ")" + ",";
+		} else str = coeff + "pow(" +  this.variable.stringify() + ",";
 		
 		if(this.power instanceof Expression && !(this.power instanceof Constant)) {
-			str += "(" + this.power.stringify() + ")";
-		} else str+= this.power.stringify();
+			str += "(" + this.power.stringify() + "))";
+		} else str+= this.power.stringify() + ")";
 		return str;
 		
 	}

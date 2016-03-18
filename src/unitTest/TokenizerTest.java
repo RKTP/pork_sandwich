@@ -10,8 +10,8 @@ import parser.Tokenizer;
 
 
 public class TokenizerTest {
-	String formula = "x^2 + 3x*y / (x^2 + 2) + log(sin(2x^3))";
-	String[] ansArray = {"x","^","2","+","3x","*","y","/","(","x","^","2","+","2",")","+","log","(","sin","(","2x","^","3",")",")"};
+	String formula = "x^2 + 3x*y / (x^2 + 2) + log(pow(x,3))";
+	String[] ansArray = {"x","^","2","+","3x","*","y","/","(","x","^","2","+","2",")","+","log","(","pow","(","x",",","3",")",")"};
 	ArrayList<String> tokens;
 
 	@Test

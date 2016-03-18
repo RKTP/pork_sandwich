@@ -49,15 +49,13 @@ public class Logarithm extends Expression {
 	}
 
 	@Override
-	public String stringify() {
+	public String stringify() throws Exception {
 		String coeff = "";
-		if(this.coefficient == -1) {
-			coeff = "-";
-		} else if(this.coefficient != 1) {
-			coeff = this.coeffToString();
+		if(this.coefficient != 1) {
+			coeff = this.coeffToString() + "*";
 		}
 		
-		return coeff + "log(" + base.stringify() + " | " + param.stringify() + ")";
+		return coeff + "log(" + base.stringify() + "," + param.stringify() + ")";
 	}
 
 }

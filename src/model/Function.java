@@ -47,6 +47,20 @@ public class Function {
 			}
 		}
 	}
+	
+	public Function(String formula, String name) throws Exception {
+		this.varMap = new HashMap<>();
+		this.functionName = name;
+		
+		this.formula = new parser.Parser().parse((parser.Tokenizer.Tokenize(formula))).functionize(this.varMap);
+	}
+	
+	public Function(String formula) throws Exception {
+		this.varMap = new HashMap<>();
+		this.functionName = "";
+		
+		this.formula = new parser.Parser().parse((parser.Tokenizer.Tokenize(formula))).functionize(this.varMap);
+	}
 
 	public void setVariableValue(char varName, double value) {
 		Variable var = this.varMap.get(varName);
@@ -175,10 +189,7 @@ public class Function {
 		} else return false;
 	}
 	
-	/*
-	 * Mock String Builder
-	 */
-	public String stringify() {
+	public String stringify() throws Exception {
 		String str = this.formula.stringify();
 		return str;
 	}

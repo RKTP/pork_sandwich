@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Scanner;
 
 import model.*;
 import userInterface.GraphInterface;
@@ -7,6 +9,7 @@ import userInterface.MainGraphicInterface;
 public class Application {
 
 	public static void main(String[] args) throws Exception {
+		/*
 		Function func;
 		Variable x = new Variable('x',8.0);
 		Variable y = new Variable('y',2.0);
@@ -70,15 +73,28 @@ public class Application {
 		
 		for(Function e : funcList) {
 			System.out.println(e.stringify());
-		}
+		}*/
 		
 		//new MainGraphicInterface(new Model()).setVisible(true);
-		
+		String formula;
+		Scanner ci = new Scanner(System.in);
+		formula = ci.nextLine();
+		Function func = new Function(formula,"nightstand");
+		System.out.println(func.stringify());
+		//new GraphInterface(func,-5,5).setVisible(true);
+		//new GraphInterface(func,0,5).setVisible(true);
+		try {
+			func = func.getDerivative('x');
+			System.out.println(func.stringify());
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		showDemo(func);
 	}
 	
-	private void showDemo(Function func) {
+	private static void showDemo(Function func) {
 		if(func.getVarNames().size()==1) {
-			new GraphInterface(func, -10,10).setVisible(true);
+			new GraphInterface(func,-1,1).setVisible(true);
 		} else {
 		}
 	}

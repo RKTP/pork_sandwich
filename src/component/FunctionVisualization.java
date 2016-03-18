@@ -14,7 +14,11 @@ public class FunctionVisualization extends JPanel {
 	
 	public FunctionVisualization(Function function) {
 		this.func = function;
-		textLabel = new JLabel(this.func.getFunctionName() + " : " + this.func.stringify());
+		try {
+			textLabel = new JLabel(this.func.getFunctionName() + " : " + this.func.stringify());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		this.add(textLabel,BorderLayout.CENTER);
 	}
 }

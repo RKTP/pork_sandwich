@@ -43,18 +43,13 @@ public class Exponential extends Expression {
 	}
 
 	@Override
-	public String stringify() {
+	public String stringify() throws Exception {
 		String coeff = "";
-		if(this.coefficient == -1) {
-			coeff = "-";
-		} else if(this.coefficient != 1) {
+		if(this.coefficient != 1) {
 			coeff = this.coeffToString();
 		}
-		
-		if(!(this.base instanceof Euler) && !(this.base instanceof Pi)) {
-			return coeff + "*" + this.base.stringify() + "^" +  "(" +  this.variable.stringify()  + ")";
-		}
-		return coeff + this.base.stringify() + "^" +  "(" +  this.variable.stringify()  + ")";
+
+		return coeff + "exp(" + this.base.stringify() + "," +  "(" +  this.variable.stringify()  + ")" + ")";
 	}
 
 }

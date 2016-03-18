@@ -54,12 +54,10 @@ public class Divide extends Expression {
 	}
 
 	@Override
-	public String stringify() {
+	public String stringify() throws Exception {
 		String coeff = "";
-		if(this.coefficient == -1) {
-			coeff = "-";
-		} else if(this.coefficient != 1) {
-			coeff = this.coeffToString();
+		if(this.coefficient != 1) {
+			coeff = this.coeffToString() + "*";
 		}
 		
 		return coeff + "(" + this.left.stringify() + ")" + " / " + "(" + this.right.stringify() + ")";

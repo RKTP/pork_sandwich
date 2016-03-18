@@ -107,6 +107,10 @@ public class AddSub extends Expression {
 			
 		}
 		
+		if(this.coefficient != 1) {
+			expression = this.coeffToString() + "*" + expression;
+		}
+		
 		return expression;
 	}
 	

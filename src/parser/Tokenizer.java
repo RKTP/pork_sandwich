@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.regex.*;
 
 public class Tokenizer {
-	private static final String pattern = "[+\\-*/\\(\\)\\^|]";
+	private static final String pattern = "[+\\-*/\\(\\)\\^,]";
 	
 	public static ArrayList<String> Tokenize(String srcFormula) {
 		ArrayList<String> tokens = new ArrayList<>();

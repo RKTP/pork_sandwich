@@ -1,27 +1,29 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Vector;
 
 public class Model {
-	private ArrayList<Function> functionList;
+	private Map<String,Function> functionList;
 	
 	public Model() {
-		this.functionList = new ArrayList<>();
+		this.functionList = new HashMap<>();
 	}
 	
 	public void addFunction(Function func) {
-		this.functionList.add(func);
+		this.functionList.put(func.getFunctionName(), func);
 	}
 	
-	public Function getFunction(int index) {
-		return this.functionList.get(index);
+	public Function getFunctionByName(String funcName) {
+		return this.functionList.get(funcName);
 	}
 	
 	public Vector<String> getFunctionNames() {
 		Vector<String> nameVec = new Vector<>();
 		for(int i =  0; i < this.functionList.size(); i++) {
-			nameVec.add(this.functionList.get(i).getFunctionName());
+			nameVec.addAll(this.functionList.keySet());
 		}
 		return nameVec;
 	}
