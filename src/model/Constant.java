@@ -1,7 +1,9 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Constant extends Expression {
-	private double value;
+	private final double value;
 	
 	public Constant(double value) {
 		if(value < 0) {

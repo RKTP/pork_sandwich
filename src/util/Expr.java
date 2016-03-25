@@ -1,4 +1,4 @@
-package parser;
+package util;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -17,6 +17,10 @@ public class Expr {
 	}
 	
 	public Expression functionize(Map<Character, Variable> varMap) throws Exception {
+		if(this.terms.size() == 1) {
+			return this.terms.get(0).functionize(varMap);
+		}
+		
 		ArrayList<Expression> addsubExpr = new ArrayList<>();
 		
 		addsubExpr.add(this.terms.get(0).functionize(varMap));
@@ -29,7 +33,8 @@ public class Expr {
 			
 			addsubExpr.add(termExpr);
 		}
-		
+
 		return new AddSub(addsubExpr);
 	}
+	
 }

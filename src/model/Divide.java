@@ -25,6 +25,14 @@ public class Divide extends Expression {
 		this.varList.addAll(this.left.getUsingVariables());
 		this.varList.addAll(this.right.getUsingVariables());
 	}
+	
+	public Expression getLeft() {
+		return this.left;
+	}
+	
+	public Expression getRight() {
+		return this.right;
+	}
 
 	@Override
 	public Expression derivative(Variable var) throws Exception {

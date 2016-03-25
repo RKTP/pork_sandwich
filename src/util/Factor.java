@@ -1,4 +1,4 @@
-package parser;
+package util;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -199,6 +199,13 @@ public class Factor {
 			}
 		}
 		
-		return result;
+		return canonicalize(result);
+	}
+
+	/*
+	 * Somehow needed...maybe.
+	 */
+	private Expression canonicalize(Expression origin) {
+		return origin;
 	}
 }

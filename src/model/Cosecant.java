@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Cosecant extends Trigonometric {	
 	
 	public Cosecant(Expression variable) {

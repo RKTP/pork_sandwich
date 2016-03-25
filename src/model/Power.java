@@ -7,10 +7,10 @@ import exception.CannotIntegrateException;
 import exception.NoSuchSyntaxExistsException;
 
 public class Power extends Expression {
-	MathTerm variable;
+	Expression variable;
 	Expression power;
 	
-	public Power(MathTerm variable, Expression power) throws NoSuchSyntaxExistsException {
+	public Power(Expression variable, Expression power) throws NoSuchSyntaxExistsException {
 		this.variable = variable;
 		this.power = power;
 		
@@ -19,7 +19,7 @@ public class Power extends Expression {
 		else throw new NoSuchSyntaxExistsException();
 	}
 	
-	public Power(MathTerm variable, double power) throws NoSuchSyntaxExistsException {
+	public Power(Expression variable, double power) throws NoSuchSyntaxExistsException {
 		this.variable = variable;
 		this.power = new Constant(power);
 		
@@ -28,7 +28,7 @@ public class Power extends Expression {
 		else throw new NoSuchSyntaxExistsException();
 	}
 	
-	public Power(MathTerm variable, double power, double co) throws NoSuchSyntaxExistsException {
+	public Power(Expression variable, double power, double co) throws NoSuchSyntaxExistsException {
 		this.variable = variable;
 		this.power = new Constant(power);
 		this.coefficient = co;
@@ -38,7 +38,7 @@ public class Power extends Expression {
 		else throw new NoSuchSyntaxExistsException();
 	}
 	
-	public Power(MathTerm variable, Expression power, double co) throws NoSuchSyntaxExistsException {
+	public Power(Expression variable, Expression power, double co) throws NoSuchSyntaxExistsException {
 		this.variable = variable;
 		this.power = power;
 		this.coefficient = co;
@@ -46,6 +46,14 @@ public class Power extends Expression {
 		if(variable instanceof Variable) this.varList.add((Variable)variable);
 		else if(variable instanceof Expression) this.varList.addAll(((Expression)variable).getUsingVariables());
 		else throw new NoSuchSyntaxExistsException();
+	}
+	
+	public Expression getVarEx() {
+		return this.variable;
+	}
+	
+	public double getPow() throws Exception {
+		return this.power.calc();
 	}
 	
 	@Override
@@ -59,10 +67,9 @@ public class Power extends Expression {
 		exp.add(new Constant(-1.0));
 		
 		Expression newPow = new AddSub(exp);
-		double newCoeff = this.coefficient * this.power.calc();
 
-		if(!(this.variable instanceof Expression)) {
-			return new Power(this.variable, newPow, newCoeff);
+		if(this.variable instanceof Variable) {
+			return new Multiply(this.power, new Power(this.variable, newPow, this.coefficient));
 		} else {
 			return new Multiply(new Multiply(this.power, new Power(this.variable, new AddSub(exp)), this.coefficient), ((Expression) this.variable).derivative(var));
 		}
@@ -97,15 +104,30 @@ public class Power extends Expression {
 		}
 		if(this.power.calc() == 1.0) return coeff + this.variable.stringify();
 		
-		if(this.variable instanceof Expression && !(this.variable instanceof Constant)) {
+		if(!(this.variable instanceof Variable)) {
 			str = coeff + "pow(" + "(" + this.variable.stringify() + ")" + ",";
 		} else str = coeff + "pow(" +  this.variable.stringify() + ",";
 		
-		if(this.power instanceof Expression && !(this.power instanceof Constant)) {
+		if(!(this.power instanceof Constant)) {
 			str += "(" + this.power.stringify() + "))";
 		} else str+= this.power.stringify() + ")";
 		return str;
 		
+	}
+	
+	public ArrayList<Expression> canonicalize() {
+		ArrayList<Expression> exprs = new ArrayList<>();
+		try {
+			if(this.power.calc() == 1) {
+				exprs.add(this.variable);
+			} else {
+				exprs.add(this);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return exprs;
 	}
 
 }

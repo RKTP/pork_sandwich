@@ -6,8 +6,8 @@ import exception.CannotIntegrateException;
 import exception.OutOfRangeException;
 
 public class Logarithm extends Expression {
-	Expression base;
-	Expression param;
+	private Expression base;
+	private Expression param;
 	
 	public Logarithm(Expression base, Expression param) {
 		this.base = base;
@@ -58,5 +58,5 @@ public class Logarithm extends Expression {
 		
 		return coeff + "log(" + base.stringify() + "," + param.stringify() + ")";
 	}
-
+	
 }

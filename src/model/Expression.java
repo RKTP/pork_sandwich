@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,6 +12,7 @@ public abstract class Expression implements MathTerm {
 	public abstract Expression integrate(Variable var) throws Exception;
 	public abstract double calc() throws Exception;
 	public abstract String stringify() throws Exception;
+	
 	
 	public Expression() {
 		varList = new HashSet<Variable>();
@@ -40,5 +42,11 @@ public abstract class Expression implements MathTerm {
 	
 	public double getCoeff() {
 		return this.coefficient;
+	}
+	
+	public ArrayList<Expression> canonicalize() {
+		ArrayList<Expression> exprs = new ArrayList<>();
+		exprs.add(this);
+		return exprs;
 	}
 }

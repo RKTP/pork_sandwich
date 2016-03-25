@@ -23,10 +23,12 @@ public class Application {
 			try {
 				Function dfunc = func.getDerivative(varName);
 				showDemo(dfunc, under, upper);
+				Function dsample = new Function(func.getDerivative(varName).stringify());
+				showDemo(dsample, under, upper);
 				//showDemo(dfunc.getIntegra(varName), under,upper);
-				System.out.println(func.getIntegraInRange(varName, under, upper));
+				//System.out.println(func.getIntegraInRange(varName, under, upper));
 				//if(func.getVarNames().size() == 1) {
-					showDemo(func.getIntegra(varName), under, upper);
+				//	showDemo(func.getIntegra(varName), under, upper);
 				//}
 			} catch(Exception e) {
 				e.printStackTrace();

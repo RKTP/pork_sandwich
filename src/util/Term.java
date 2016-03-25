@@ -1,4 +1,4 @@
-package parser;
+package util;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -21,17 +21,19 @@ public class Term {
 	public Expression functionize(Map<Character, Variable> varMap) throws Exception {
 		Expression result = this.factors.get(0).functionize(varMap);
 		if(this.factors.size() <= 1) {
-			return this.factors.get(0).functionize(varMap);
+			return result;
 		}
+
 
 		for(int i = 0; i < this.ops.size(); i++) {
 			String op = this.ops.get(i);
 			if(op.equals("*")) {
-				result = new Multiply(result, this.factors.get(i+1).functionize(varMap));
+				result = new Multiply(result, factors.get(i+1).functionize(varMap));
 			} else {
-				result = new Divide(result, this.factors.get(i+1).functionize(varMap));
+				result = new Divide(result, factors.get(i+1).functionize(varMap));
 			}
 		}
 		return result;
 	}
+	
 }

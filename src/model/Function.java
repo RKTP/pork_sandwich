@@ -52,14 +52,14 @@ public class Function {
 		this.varMap = new HashMap<>();
 		this.functionName = name;
 		
-		this.formula = new parser.Parser().parse((parser.Tokenizer.Tokenize(formula))).functionize(this.varMap);
+		this.formula = new util.Parser().parse((util.Tokenizer.Tokenize(formula))).functionize(this.varMap);
 	}
 	
 	public Function(String formula) throws Exception {
 		this.varMap = new HashMap<>();
 		this.functionName = "";
 		
-		this.formula = new parser.Parser().parse((parser.Tokenizer.Tokenize(formula))).functionize(this.varMap);
+		this.formula = new util.Parser().parse((util.Tokenizer.Tokenize(formula))).functionize(this.varMap);
 	}
 
 	public void setVariableValue(char varName, double value) {
@@ -190,7 +190,8 @@ public class Function {
 	}
 	
 	public String stringify() throws Exception {
-		String str = this.formula.stringify();
+		Expression canonicalized = new AddSub(this.formula.canonicalize());
+		String str = canonicalized.stringify();
 		return str;
 	}
 	

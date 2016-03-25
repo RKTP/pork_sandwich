@@ -3,9 +3,9 @@ package unitTest;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import java.util.ArrayList;
+import util.Tokenizer;
 
-import parser.Tokenizer;
+import java.util.ArrayList;
 
 
 
