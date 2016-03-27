@@ -20,12 +20,19 @@ public class Multiply extends Expression {
 		exprs.add(this.right);
 		
 		exprs.sort(new MultiExprComparator());
-		
-		this.left = exprs.get(0);
-		this.right = exprs.get(1);
+
+		if(exprs.get(0) instanceof Constant &&
+				exprs.get(1) instanceof Multiply &&
+				((Multiply) exprs.get(1)).getLeft() instanceof Constant) {
+			this.left = new Constant(exprs.get(0).calc() * ((Multiply) exprs.get(1)).getLeft().calc());
+			this.right = ((Multiply) exprs.get(1)).getRight();
+		} else {
+			this.left = exprs.get(0);
+			this.right = exprs.get(1);
+		}
 	}
 	
-	public Multiply(Expression left, Expression right, double co) {
+	public Multiply(Expression left, Expression right, double co) throws Exception {
 		this.left = left;
 		this.right = right;
 		this.coefficient = co;
@@ -38,9 +45,16 @@ public class Multiply extends Expression {
 		exprs.add(this.right);
 		
 		exprs.sort(new MultiExprComparator());
-		
-		this.left = exprs.get(0);
-		this.right = exprs.get(1);
+
+		if(exprs.get(0) instanceof Constant &&
+				exprs.get(1) instanceof Multiply &&
+				((Multiply) exprs.get(1)).getLeft() instanceof Constant) {
+			this.left = new Constant(exprs.get(0).calc() * ((Multiply) exprs.get(1)).getLeft().calc());
+			this.right = ((Multiply) exprs.get(1)).getRight();
+		} else {
+			this.left = exprs.get(0);
+			this.right = exprs.get(1);
+		}
 	}
 
 	public Expression getLeft() {
@@ -162,7 +176,11 @@ public class Multiply extends Expression {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				exprs.add(new Multiply(leftExprs.get(i), rightExprs.get(j), this.coefficient));
+                try {
+                    exprs.add(new Multiply(leftExprs.get(i), rightExprs.get(j), this.coefficient));
+                } catch(Exception e) {
+                    e.printStackTrace();
+                }
 			}
 		}
 		
